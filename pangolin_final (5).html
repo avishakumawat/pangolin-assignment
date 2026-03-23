@@ -1,0 +1,2013 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Growth Marketing Lead — Avisha Kumawat × Pangolin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<style>
+/* ─────────────────────── RESET & BASE ─────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth}
+body{
+  font-family:'Inter',system-ui,sans-serif;
+  background:#F8F7F4;color:#141414;
+  line-height:1.65;-webkit-font-smoothing:antialiased;
+  overflow-x:hidden
+}
+
+/* ─────────────────────── DESIGN TOKENS ─────────────────────── */
+:root{
+  --coral:#E05A38;
+  --coral-hover:#C8492A;
+  --coral-l:#FBF0EC;
+  --coral-ll:#FEF8F5;
+  --ink:#141414;
+  --ink-1:#1E1E1E;
+  --ink-2:#282828;
+  --ink-4:#444;
+  --ink-6:#666;
+  --ink-9:#999;
+  --ink-c:#CCC;
+  --ink-e:#E8E6E2;
+  --ink-f:#F2F0ED;
+  --white:#FFF;
+  --bg:#F8F7F4;
+  --green:#0F6B3A;
+  --green-l:#E4F5ED;
+  --blue:#1A4D94;
+  --blue-l:#E6EFFA;
+  --amber:#7A5000;
+  --amber-l:#FEF4E0;
+  --red-l:#FEEAEA;
+  --serif:'Playfair Display',Georgia,serif;
+  --nav-w:240px;
+  --content-max:740px;
+  --r:6px;
+  --rl:12px;
+  --rx:20px;
+  --shadow-sm:0 1px 4px rgba(0,0,0,.06),0 2px 8px rgba(0,0,0,.04);
+  --shadow:0 4px 16px rgba(0,0,0,.08),0 1px 4px rgba(0,0,0,.04);
+  --shadow-lg:0 12px 40px rgba(0,0,0,.12),0 4px 16px rgba(0,0,0,.06);
+}
+
+/* ─────────────────────── ANIMATIONS ─────────────────────── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes growX{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes barIn{from{width:0;min-width:0}to{}}
+@keyframes countPop{0%{transform:scale(.8);opacity:0}60%{transform:scale(1.05)}100%{transform:scale(1);opacity:1}}
+@keyframes spinIn{from{transform:rotate(-10deg) scale(.9);opacity:0}to{transform:rotate(0) scale(1);opacity:1}}
+
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .5s cubic-bezier(.4,0,.2,1),transform .5s cubic-bezier(.4,0,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.reveal-l{opacity:0;transform:translateX(-16px);transition:opacity .45s ease,transform .45s ease}
+.reveal-l.in{opacity:1;transform:none}
+
+/* ─────────────────────── STICKY NAV ─────────────────────── */
+#nav{
+  position:fixed;top:0;left:0;right:0;
+  background:rgba(20,20,20,.95);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(255,255,255,.07);
+  z-index:1000;
+  transition:transform .3s ease
+}
+#nav.hidden{transform:translateY(-100%)}
+.nav-inner{
+  max-width:1180px;margin:0 auto;
+  padding:0 40px;
+  display:flex;align-items:center;
+  justify-content:space-between;
+  height:52px;
+}
+.nav-brand{font-family:var(--serif);font-size:17px;color:var(--coral);font-weight:400;letter-spacing:-.01em}
+.nav-links{display:flex;gap:4px}
+.nav-link{
+  font-size:11.5px;font-weight:500;padding:6px 12px;
+  border-radius:100px;color:rgba(255,255,255,.45);
+  cursor:pointer;transition:color .15s,background .15s;
+  border:none;background:none;letter-spacing:.01em;
+  outline:none;-webkit-appearance:none;
+}
+.nav-link:hover{color:rgba(255,255,255,.8);background:rgba(255,255,255,.07)}
+.nav-link.active{color:var(--coral);background:rgba(224,90,56,.12)}
+.nav-progress{
+  height:2px;background:rgba(255,255,255,.06);
+  position:absolute;bottom:0;left:0;right:0;
+}
+.nav-progress-bar{
+  height:2px;background:var(--coral);
+  width:0%;transition:width .1s linear;
+  transform-origin:left;
+}
+
+/* ─────────────────────── SIDEBAR ─────────────────────── */
+#sidebar{
+  position:fixed;top:52px;left:0;bottom:0;
+  width:var(--nav-w);
+  background:var(--ink-1);
+  border-right:1px solid rgba(255,255,255,.05);
+  overflow-y:auto;padding:32px 0;z-index:900;
+  transition:transform .3s ease;
+}
+#sidebar::-webkit-scrollbar{width:3px}
+#sidebar::-webkit-scrollbar-track{background:transparent}
+#sidebar::-webkit-scrollbar-thumb{background:rgba(255,255,255,.1);border-radius:2px}
+.sb-part{margin-bottom:8px}
+.sb-part-label{
+  font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(255,255,255,.2);padding:0 20px;margin-bottom:6px;
+}
+.sb-item{
+  display:flex;align-items:center;gap:10px;
+  padding:8px 20px;cursor:pointer;
+  font-size:12px;font-weight:500;color:rgba(255,255,255,.4);
+  transition:color .15s,background .15s;border-left:2px solid transparent;
+  text-decoration:none;user-select:none;
+}
+.sb-item:hover{color:rgba(255,255,255,.75);background:rgba(255,255,255,.04)}
+.sb-item.active{color:var(--coral);border-left-color:var(--coral);background:rgba(224,90,56,.06)}
+.sb-dot{width:5px;height:5px;border-radius:50%;background:currentColor;flex-shrink:0;opacity:.6}
+
+/* ─────────────────────── MAIN LAYOUT ─────────────────────── */
+#main{margin-left:var(--nav-w);padding-top:52px}
+.page-section{
+  padding:80px 64px;
+  max-width:calc(var(--content-max) + 128px);
+}
+.content-wrap{max-width:var(--content-max);margin:0 auto}
+
+/* ─────────────────────── COVER SECTION ─────────────────────── */
+#cover{
+  background:var(--ink);
+  min-height:calc(100vh - 52px);
+  padding:64px 60px 72px;
+  display:flex;align-items:center;
+  position:relative;overflow:hidden;
+  width:100%;box-sizing:border-box;
+}
+#cover::before{
+  content:'';position:absolute;inset:0;
+  background-image:radial-gradient(circle,rgba(255,255,255,.04) 1px,transparent 1px);
+  background-size:32px 32px;
+  mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,#000 40%,transparent 100%);
+  pointer-events:none;
+}
+.cover-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--coral);margin-bottom:24px;
+  animation:fadeUp .5s ease .1s both
+}
+.cover-eyebrow::before{content:'';width:20px;height:1px;background:var(--coral);flex-shrink:0}
+.cover-h1{
+  font-family:var(--serif);
+  font-size:clamp(36px,4vw,58px);
+  font-weight:700;line-height:1.05;
+  letter-spacing:-.02em;color:#fff;
+  margin-bottom:20px;
+  animation:fadeUp .6s ease .2s both
+}
+.cover-h1 em{color:var(--coral);font-style:italic;font-weight:400}
+.cover-sub{
+  font-size:14px;color:rgba(255,255,255,.38);
+  max-width:460px;line-height:1.7;margin-bottom:40px;
+  animation:fadeUp .6s ease .3s both
+}
+.cover-stats{
+  display:flex;flex-direction:row;
+  gap:1px;background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:10px;overflow:hidden;
+  animation:fadeUp .6s ease .4s both;
+  max-width:540px;
+  flex-wrap:nowrap;
+}
+.cstat{
+  flex:1 1 0;min-width:0;
+  padding:14px 12px;background:rgba(255,255,255,.02);
+  transition:background .2s;cursor:default;
+  overflow:hidden;
+}
+.cstat:hover{background:rgba(255,255,255,.06)}
+.cstat-v{
+  font-family:var(--serif);font-size:18px;font-weight:700;
+  color:#fff;line-height:1;margin-bottom:4px;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.cstat-l{font-size:8px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.28);white-space:nowrap}
+.cstat-s{font-size:9.5px;color:rgba(255,255,255,.18);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cover-scroll{
+  margin-top:32px;
+  display:flex;align-items:center;gap:8px;
+  animation:fadeIn 1s ease 1.4s both;
+}
+.cover-scroll-text{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.2)}
+.cover-scroll-arrow{width:1px;height:20px;background:linear-gradient(to bottom,rgba(255,255,255,.2),transparent)}
+
+/* ─────────────────────── SECTION ANATOMY ─────────────────────── */
+.sec-band{
+  background:var(--ink-2);
+  padding:56px 64px;
+  border-bottom:1px solid rgba(255,255,255,.05);
+}
+.sec-band-inner{max-width:var(--content-max);margin:0 auto;display:flex;align-items:center;gap:24px}
+.sec-band-num{
+  font-family:var(--serif);font-style:italic;font-size:96px;font-weight:700;
+  line-height:1;letter-spacing:-.04em;color:rgba(255,255,255,.04);
+  flex-shrink:0;user-select:none
+}
+.sec-band-kicker{font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--coral);margin-bottom:10px}
+.sec-band-title{font-family:var(--serif);font-size:34px;font-weight:700;color:#fff;line-height:1.15;letter-spacing:-.015em}
+.sec-band-desc{font-size:14px;color:rgba(255,255,255,.35);margin-top:10px;max-width:460px;line-height:1.6}
+
+/* ─────────────────────── TYPOGRAPHY ─────────────────────── */
+.h2{font-family:var(--serif);font-size:28px;font-weight:700;letter-spacing:-.015em;line-height:1.2;color:var(--ink);margin-bottom:6px}
+.h3{font-size:17px;font-weight:700;letter-spacing:-.01em;color:var(--ink);margin-bottom:4px;line-height:1.3}
+.eyebrow{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-9);margin-bottom:8px}
+.label{font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-9)}
+p{font-size:14.5px;line-height:1.8;color:var(--ink-4);margin-bottom:16px}
+p:last-child{margin-bottom:0}
+strong{font-weight:600;color:var(--ink)}
+em.hi{color:var(--coral);font-style:normal;font-weight:600}
+
+/* ─────────────────────── SECTION HEADERS ─────────────────────── */
+.task-hd{display:flex;align-items:flex-start;gap:16px;margin-bottom:28px;padding-bottom:24px;border-bottom:1px solid var(--ink-e)}
+.task-badge{
+  width:32px;height:32px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:12px;font-weight:700;color:#fff;flex-shrink:0;margin-top:2px;
+}
+.tc{background:var(--coral)}.tg{background:var(--green)}.tb{background:var(--blue)}.ta{background:var(--amber)}
+.task-meta{}
+.task-tag{font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-9);margin-bottom:5px}
+.task-title{font-family:var(--serif);font-size:24px;font-weight:700;letter-spacing:-.015em;color:var(--ink);line-height:1.2}
+.task-desc{font-size:13.5px;color:var(--ink-6);margin-top:6px;line-height:1.6}
+
+/* ─────────────────────── CALLOUT BOXES ─────────────────────── */
+.callout{
+  border-left:3px solid var(--coral);background:var(--coral-ll);
+  padding:18px 22px;border-radius:0 var(--r) var(--r) 0;margin:24px 0;
+}
+.callout-label{font-size:9.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--coral);margin-bottom:8px}
+.callout p{color:var(--ink-2);font-size:14px;margin:0;line-height:1.7}
+.callout.green{border-left-color:var(--green);background:var(--green-l)}
+.callout.green .callout-label{color:var(--green)}
+.callout.blue{border-left-color:var(--blue);background:var(--blue-l)}
+.callout.blue .callout-label{color:var(--blue)}
+.callout.amber{border-left-color:var(--amber);background:var(--amber-l)}
+.callout.amber .callout-label{color:var(--amber)}
+
+/* ─────────────────────── DIAGNOSIS BOX ─────────────────────── */
+.diagnosis{
+  background:var(--ink);border-radius:var(--rl);
+  padding:36px 40px;margin:24px 0;
+  position:relative;overflow:hidden;
+}
+.diagnosis::before{
+  content:'';position:absolute;top:-60px;right:-60px;
+  width:200px;height:200px;border-radius:50%;
+  background:rgba(224,90,56,.06);
+}
+.diag-label{font-size:9.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--coral);margin-bottom:16px}
+.diag-text{font-family:var(--serif);font-size:22px;font-weight:400;color:#fff;line-height:1.45;letter-spacing:-.01em}
+.diag-text em{color:var(--coral);font-style:italic}
+
+/* ─────────────────────── EVIDENCE TABLE ─────────────────────── */
+.evidence{display:flex;flex-direction:column;gap:0;margin:24px 0;border:1px solid var(--ink-e);border-radius:var(--rl);overflow:hidden}
+.ev-row{
+  display:grid;grid-template-columns:30px 1fr 1fr;gap:0;
+  border-bottom:1px solid var(--ink-f);
+  transition:background .15s;cursor:default;
+}
+.ev-row:last-child{border-bottom:none}
+.ev-row:hover{background:var(--coral-ll)}
+.ev-row.header{background:var(--ink-2);cursor:default}
+.ev-row.header:hover{background:var(--ink-2)}
+.ev-cell{padding:14px 16px;font-size:13px;line-height:1.5;vertical-align:top}
+.ev-row.header .ev-cell{font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.5);padding:10px 16px}
+.ev-num{font-family:var(--serif);font-size:13px;font-weight:700;color:var(--ink-c);padding:14px 0 14px 16px;display:flex;align-items:flex-start}
+.ev-signal{font-weight:600;color:var(--ink)}
+.ev-why{color:var(--ink-6)}
+.ev-arrow{color:var(--coral);font-size:12px;font-weight:700}
+
+/* ─────────────────────── METRICS GRID ─────────────────────── */
+.metrics-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:24px 0}
+.metric{
+  background:var(--white);border:1px solid var(--ink-e);
+  border-radius:var(--rl);padding:20px;
+  transition:box-shadow .2s,transform .2s,border-color .2s;
+  cursor:default;
+}
+.metric:hover{box-shadow:var(--shadow);transform:translateY(-2px);border-color:var(--ink-c)}
+.metric-label{font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-9);margin-bottom:10px}
+.metric-value{font-family:var(--serif);font-size:32px;font-weight:700;color:var(--ink);line-height:1;letter-spacing:-.02em}
+.metric-sub{font-size:11.5px;color:var(--ink-9);margin-top:6px;line-height:1.4}
+.metric-flag{font-size:11px;font-weight:700;margin-top:8px}
+.flag-r{color:#C0392B}.flag-g{color:var(--green)}
+
+/* ─────────────────────── FUNNEL ─────────────────────── */
+.funnel{margin:28px 0;display:flex;flex-direction:column;gap:4px}
+.f-row{display:grid;grid-template-columns:1fr 220px;align-items:center}
+.f-bar-wrap{position:relative;min-height:56px;display:flex;align-items:stretch}
+.f-bar{
+  display:flex;align-items:center;padding:10px 22px 10px 16px;
+  font-size:12px;font-weight:600;color:#fff;
+  white-space:normal;overflow:visible;line-height:1.4;
+  clip-path:polygon(0 0,calc(100% - 18px) 0,100% 50%,calc(100% - 18px) 100%,0 100%);
+  min-width:120px;cursor:default;
+  transition:filter .2s;
+}
+.f-bar:hover{filter:brightness(1.12)}
+.f-bar.b0{background:#1E1E1E}
+.f-bar.b1{background:#2E2E2E}
+.f-bar.b2{background:var(--coral)}
+.f-bar.b3{background:#8B1C0C}
+.f-meta{padding-left:20px}
+.f-v{font-size:15px;font-weight:700;color:var(--ink);letter-spacing:-.01em}
+.f-s{font-size:11px;color:var(--ink-9);margin-top:3px;line-height:1.4}
+.f-n{font-size:10.5px;font-weight:700;margin-top:4px}
+.f-n.r{color:var(--coral)}.f-n.d{color:#8B1C0C}
+.f-connector{height:12px;display:flex;align-items:center;padding-left:12px}
+.f-caption{font-size:12px;color:var(--ink-9);margin-top:10px;font-style:italic;padding-top:10px;border-top:1px solid var(--ink-f)}
+
+/* ─────────────────────── COMPARISON TABLE ─────────────────────── */
+.compare{display:grid;grid-template-columns:1fr 1fr 1fr;border:1px solid var(--ink-e);border-radius:var(--rl);overflow:hidden;margin:24px 0}
+.cmp-hd{padding:12px 16px;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.cmp-hd.c0{background:var(--ink-f);color:var(--ink-9)}
+.cmp-hd.c1{background:#FEF0EB;color:#C0390F;border-left:1px solid var(--ink-e)}
+.cmp-hd.c2{background:#EAF5EE;color:#0A5C2E;border-left:1px solid var(--ink-e)}
+.cmp-row{display:contents}
+.cmp-row:hover .cmp-cell{background:var(--bg)}
+.cmp-cell{padding:12px 16px;font-size:13px;line-height:1.5;border-top:1px solid var(--ink-f)}
+.cmp-cell:nth-child(3n+1){color:var(--ink);font-weight:600;font-size:12px;background:var(--ink-f);border-right:1px solid var(--ink-e)}
+.cmp-cell:nth-child(3n+2){color:var(--ink-6);border-right:1px solid var(--ink-e)}
+.cmp-cell:nth-child(3n+3){color:var(--ink-4)}
+
+/* ─────────────────────── BET CARDS ─────────────────────── */
+.bets{display:flex;flex-direction:column;gap:12px;margin:24px 0}
+.bet{
+  background:var(--white);border:1px solid var(--ink-e);
+  border-radius:var(--rl);overflow:hidden;
+  transition:box-shadow .2s,transform .2s;
+  cursor:default;
+}
+.bet:hover{box-shadow:var(--shadow);transform:translateY(-2px)}
+.bet-head{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px 24px;border-bottom:1px solid var(--ink-f);
+  cursor:pointer;user-select:none;
+}
+.bet-head-l{display:flex;align-items:center;gap:16px}
+.bet-n{font-family:var(--serif);font-size:28px;font-weight:700;color:var(--ink-e);line-height:1;flex-shrink:0;letter-spacing:-.03em}
+.bet-title{font-size:15px;font-weight:700;color:var(--ink);line-height:1.3;letter-spacing:-.01em}
+.bet-tag{font-size:9.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;border-radius:100px;flex-shrink:0}
+.btag-coral{background:var(--coral-l);color:var(--coral)}
+.btag-blue{background:var(--blue-l);color:var(--blue)}
+.btag-green{background:var(--green-l);color:var(--green)}
+.bet-chevron{font-size:12px;color:var(--ink-c);transition:transform .25s;flex-shrink:0}
+.bet-chevron.open{transform:rotate(180deg)}
+.bet-body{padding:0 24px;max-height:0;overflow:hidden;transition:max-height .35s cubic-bezier(.4,0,.2,1),padding .35s}
+.bet-body.open{padding:20px 24px;max-height:300px}
+.bet-body p{font-size:13.5px;line-height:1.8;color:var(--ink-4);margin-bottom:14px}
+.bet-chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:11px;font-weight:500;padding:4px 11px;border-radius:100px;border:1px solid var(--ink-e);color:var(--ink-6);transition:border-color .15s,background .15s}
+.chip:hover{border-color:var(--ink-c);background:var(--bg)}
+
+/* ─────────────────────── CHANNEL CARDS ─────────────────────── */
+.channels{display:flex;flex-direction:column;gap:10px;margin:24px 0}
+.ch{
+  display:grid;grid-template-columns:auto 1fr auto;
+  gap:0;border:1px solid var(--ink-e);border-radius:var(--rl);
+  overflow:hidden;transition:box-shadow .2s,transform .2s;cursor:default;
+}
+.ch:hover{box-shadow:var(--shadow);transform:translateY(-1px)}
+.ch-icon{
+  width:56px;display:flex;align-items:center;justify-content:center;
+  font-size:20px;background:var(--ink-f);border-right:1px solid var(--ink-e);
+}
+.ch-body{padding:16px 20px}
+.ch-title{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:4px}
+.ch-desc{font-size:13px;color:var(--ink-6);line-height:1.6}
+.ch-why-not{font-size:11.5px;color:var(--ink-9);margin-top:6px;font-style:italic}
+.ch-budget{
+  padding:16px 20px;display:flex;flex-direction:column;
+  align-items:flex-end;justify-content:center;
+  border-left:1px solid var(--ink-e);background:var(--ink-f);min-width:90px;
+}
+.ch-budget-v{font-family:var(--serif);font-size:20px;font-weight:700;color:var(--ink);letter-spacing:-.02em}
+.ch-budget-l{font-size:10px;color:var(--ink-9);margin-top:2px;letter-spacing:.05em}
+
+/* ─────────────────────── OFFER BOX ─────────────────────── */
+.offer-card{
+  background:var(--ink);border-radius:var(--rl);
+  padding:32px 36px;margin:24px 0;
+  display:grid;grid-template-columns:1fr auto;gap:32px;align-items:start;
+}
+.offer-badge{
+  font-size:9.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--coral);margin-bottom:12px;
+}
+.offer-title{font-family:var(--serif);font-size:19px;font-weight:700;color:#fff;line-height:1.3;margin-bottom:10px;letter-spacing:-.01em}
+.offer-desc{font-size:13.5px;color:rgba(255,255,255,.45);line-height:1.7}
+.offer-stats{display:flex;flex-direction:column;gap:8px}
+.ostat{
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);
+  border-radius:var(--r);padding:12px 16px;min-width:130px;
+}
+.ostat-v{font-family:var(--serif);font-size:22px;font-weight:700;color:var(--coral);line-height:1}
+.ostat-l{font-size:10px;color:rgba(255,255,255,.3);margin-top:3px;letter-spacing:.06em}
+
+/* ─────────────────────── EXPERIMENT CARDS ─────────────────────── */
+.exps{display:flex;flex-direction:column;gap:12px;margin:24px 0}
+.exp{border:1px solid var(--ink-e);border-radius:var(--rl);overflow:hidden;transition:box-shadow .2s}
+.exp:hover{box-shadow:var(--shadow)}
+.exp-hd{
+  background:var(--ink-2);padding:14px 22px;
+  display:flex;align-items:center;justify-content:space-between;
+  cursor:pointer;user-select:none;
+}
+.exp-hd-l{display:flex;align-items:center;gap:14px}
+.exp-n{font-family:var(--serif);font-size:20px;font-weight:700;color:rgba(255,255,255,.15);flex-shrink:0}
+.exp-name{font-size:13.5px;font-weight:600;color:#fff}
+.exp-when{font-size:10.5px;color:rgba(255,255,255,.3);font-weight:600;padding:3px 10px;border:1px solid rgba(255,255,255,.1);border-radius:100px}
+.exp-chev{font-size:11px;color:rgba(255,255,255,.3);transition:transform .25s}
+.exp-chev.open{transform:rotate(180deg)}
+.exp-cols{display:grid;grid-template-columns:repeat(3,1fr);background:var(--white);max-height:0;overflow:hidden;transition:max-height .35s cubic-bezier(.4,0,.2,1)}
+.exp-cols.open{max-height:300px}
+.exp-col{padding:18px 20px;border-right:1px solid var(--ink-f)}
+.exp-col:last-child{border-right:none}
+.exp-clabel{font-size:9.5px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-9);margin-bottom:8px}
+.exp-ctext{font-size:13px;color:var(--ink-6);line-height:1.65}
+
+/* ─────────────────────── MEASUREMENT ─────────────────────── */
+.meas{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:24px 0}
+.mcard{border:1px solid var(--ink-e);border-radius:var(--rl);overflow:hidden}
+.mcard-hd{background:var(--ink-2);padding:14px 20px}
+.mcard-title{font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#fff}
+.mcard-sub{font-size:11px;color:rgba(255,255,255,.3);margin-top:3px}
+.m-row{
+  display:grid;grid-template-columns:1fr auto;gap:12px;
+  padding:11px 20px;border-bottom:1px solid var(--ink-f);
+  align-items:center;transition:background .15s;cursor:default;
+}
+.m-row:last-child{border-bottom:none}
+.m-row:hover{background:var(--bg)}
+.m-name{font-size:13px;color:var(--ink);font-weight:500}
+.m-target{font-size:12px;font-weight:700;color:var(--green);white-space:nowrap}
+
+/* ─────────────────────── KILL CRITERIA ─────────────────────── */
+.kills{display:flex;flex-direction:column;gap:10px;margin:24px 0}
+.kill{display:grid;grid-template-columns:80px 1fr;border:1px solid var(--ink-e);border-radius:var(--rl);overflow:hidden;transition:box-shadow .2s,transform .2s;cursor:default}
+.kill:hover{box-shadow:var(--shadow);transform:translateX(3px)}
+.kill-day{background:var(--ink-2);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px 10px}
+.kd-l{font-size:8.5px;text-transform:uppercase;letter-spacing:.16em;color:rgba(255,255,255,.2);margin-bottom:5px}
+.kd-v{font-family:var(--serif);font-size:30px;font-weight:700;color:var(--coral);line-height:1;letter-spacing:-.02em}
+.kill-body{padding:18px 22px;background:var(--white)}
+.kill-title{font-size:13.5px;font-weight:700;color:var(--ink);margin-bottom:5px}
+.kill-text{font-size:13px;color:var(--ink-6);line-height:1.6;margin-bottom:10px}
+.kill-pivot{font-size:12px;font-weight:600;color:var(--blue);background:var(--blue-l);padding:8px 14px;border-radius:var(--r);display:block;line-height:1.5}
+
+/* ─────────────────────── PROFILES ─────────────────────── */
+.profiles{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0}
+.profile{border:1px solid var(--ink-e);border-radius:var(--rl);overflow:hidden;transition:box-shadow .2s,transform .2s;cursor:default}
+.profile:hover{box-shadow:var(--shadow);transform:translateY(-2px)}
+.profile.selected{border-color:var(--coral);box-shadow:0 0 0 3px rgba(224,90,56,.1)}
+.p-hd{padding:16px;border-bottom:1px solid var(--ink-f);display:flex;align-items:center;gap:12px}
+.p-av{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#fff;flex-shrink:0}
+.p-name{font-size:14px;font-weight:700;color:var(--ink)}
+.p-yrs{font-size:11px;color:var(--ink-9)}
+.sel-pill{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:3px 9px;border-radius:100px;background:var(--coral);color:#fff;margin-left:auto}
+.p-body{padding:14px 16px}
+.p-slabel{font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-9);margin-bottom:7px}
+.p-chips{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:12px}
+.pc{font-size:11px;padding:3px 10px;border-radius:100px;font-weight:500}
+.pc.s{background:var(--green-l);color:var(--green)}
+.pc.g{background:#FEE2E2;color:#991B1B}
+
+/* ─────────────────────── WEEK PLAN ─────────────────────── */
+.weeks{display:flex;flex-direction:column;border:1px solid var(--ink-e);border-radius:var(--rl);overflow:hidden;margin:24px 0}
+.w-row{display:grid;grid-template-columns:88px 1fr;border-bottom:1px solid var(--ink-f)}
+.w-row:last-child{border-bottom:none}
+.w-left{background:var(--ink-2);padding:22px 16px;cursor:pointer;transition:background .2s}
+.w-row:hover .w-left{background:var(--ink)}
+.w-big{font-family:var(--serif);font-size:32px;font-weight:700;color:rgba(255,255,255,.1);line-height:1;letter-spacing:-.02em}
+.w-tag{font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--coral);margin-top:5px}
+.w-right{background:var(--white);padding:22px 26px}
+.w-title{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:8px;letter-spacing:-.01em}
+.w-detail{font-size:13.5px;color:var(--ink-6);line-height:1.75}
+.w-out{display:inline-flex;align-items:flex-start;gap:7px;font-size:11.5px;font-weight:600;color:var(--green);margin-top:12px;background:var(--green-l);padding:6px 12px;border-radius:var(--r);line-height:1.4}
+.w-out::before{content:'✓';flex-shrink:0;margin-top:1px}
+
+/* ─────────────────────── SYSTEM CARDS ─────────────────────── */
+.syscards{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:24px 0}
+.scard{background:var(--white);border:1px solid var(--ink-e);border-radius:var(--rl);padding:24px;transition:box-shadow .2s,transform .2s;cursor:default}
+.scard:hover{box-shadow:var(--shadow);transform:translateY(-2px)}
+.scard-icon{width:40px;height:40px;border-radius:var(--r);display:flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:14px}
+.si-coral{background:var(--coral-l)}.si-green{background:var(--green-l)}.si-blue{background:var(--blue-l)}.si-amber{background:var(--amber-l)}
+.scard-title{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:10px;line-height:1.3;letter-spacing:-.01em}
+.scard-body{font-size:13px;color:var(--ink-6);line-height:1.75}
+
+/* ─────────────────────── FOOTER ─────────────────────── */
+#footer{
+  background:var(--ink-1);
+  padding:40px 64px;
+  margin-left:var(--nav-w);
+  border-top:1px solid rgba(255,255,255,.05);
+}
+.footer-inner{
+  max-width:var(--content-max);margin:0 auto;
+  display:grid;grid-template-columns:1fr 1fr 1fr;
+  gap:32px;align-items:center;
+}
+.footer-brand{font-family:var(--serif);font-size:17px;color:var(--coral);margin-bottom:5px;font-weight:700}
+.footer-sub{font-size:11px;color:rgba(255,255,255,.22);line-height:1.6}
+.footer-center{display:flex;flex-direction:column;align-items:center;gap:8px}
+.footer-name{font-size:13px;font-weight:700;color:rgba(255,255,255,.65);letter-spacing:.01em}
+.footer-contacts{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:center}
+.footer-contact-item{
+  display:inline-flex;align-items:center;gap:5px;
+  font-size:11px;color:rgba(255,255,255,.28);
+}
+.footer-contact-link{
+  display:inline-flex;align-items:center;gap:5px;
+  font-size:11px;color:rgba(255,255,255,.28);
+  text-decoration:none;transition:color .15s;
+}
+.footer-contact-link:hover{color:var(--coral)}
+.footer-dot{color:rgba(255,255,255,.15);font-size:10px}
+.footer-right{display:flex;flex-direction:column;align-items:flex-end;gap:5px}
+.footer-part-tag{font-size:10.5px;color:rgba(255,255,255,.2);line-height:1.5}
+
+/* ─────────────────────── SCROLL TO TOP ─────────────────────── */
+#top-btn{
+  position:fixed;bottom:32px;right:32px;
+  width:44px;height:44px;border-radius:50%;
+  background:var(--ink-2);border:1px solid rgba(255,255,255,.1);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;opacity:0;transform:translateY(10px);
+  transition:opacity .25s,transform .25s,background .15s;
+  z-index:900;font-size:14px;color:rgba(255,255,255,.5);
+}
+#top-btn.visible{opacity:1;transform:translateY(0)}
+#top-btn:hover{background:var(--coral);border-color:var(--coral);color:#fff}
+
+/* ─────────────────────── PROGRESS INDICATOR ─────────────────────── */
+#reading-bar{position:fixed;top:52px;left:var(--nav-w);right:0;height:2px;background:rgba(0,0,0,.06);z-index:800}
+#reading-bar-fill{height:2px;background:var(--coral);width:0%;transition:width .05s linear;transform-origin:left}
+
+/* ─────────────────────── UTILITIES ─────────────────────── */
+.mt8{margin-top:8px}.mt16{margin-top:16px}.mt24{margin-top:24px}.mt32{margin-top:32px}.mt40{margin-top:40px}
+.mb8{margin-bottom:8px}.mb16{margin-bottom:16px}
+.divider{border:none;border-top:1px solid var(--ink-e);margin:32px 0}
+.inline-note{font-size:12px;color:var(--ink-9);font-style:italic;margin-top:8px;display:block}
+
+@media(max-width:900px){
+  #sidebar{transform:translateX(-100%)}
+  #main,#footer{margin-left:0}
+  #reading-bar{left:0}
+  .page-section{padding:60px 32px}
+  #cover{padding:60px 28px 60px}
+  .cover-stats{grid-template-columns:repeat(2,1fr);max-width:100%}
+  .profiles{grid-template-columns:1fr}
+  .meas{grid-template-columns:1fr}
+  .syscards{grid-template-columns:1fr}
+  .compare{grid-template-columns:1fr}
+  .footer-inner{grid-template-columns:1fr;text-align:center;gap:24px}
+  .footer-center{align-items:center}
+  .footer-right{align-items:center}
+  .offer-card{grid-template-columns:1fr}
+  .sec-band{padding:48px 32px}
+  .li-body{grid-template-columns:1fr}
+  .abm-var-grid{grid-template-columns:1fr}
+  .unfair-body{grid-template-columns:1fr}
+  .unfair-footer{grid-template-columns:repeat(2,1fr)}
+}
+
+/* ─────────────────────── PROOF SUB-HEADERS ─────────────────────── */
+.proof-sub-hd{
+  display:flex;align-items:flex-start;gap:20px;
+  padding:28px 0 20px;
+  border-top:1px solid var(--ink-e);
+  margin-bottom:16px;
+}
+.proof-sub-hd:first-child{border-top:none;padding-top:0}
+.proof-sub-num{
+  font-family:var(--serif);font-size:40px;font-weight:700;
+  color:var(--ink-e);line-height:1;flex-shrink:0;
+  letter-spacing:-.03em;margin-top:2px;
+}
+.proof-sub-kicker{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--coral);margin-bottom:6px}
+.proof-sub-title{font-family:var(--serif);font-size:22px;font-weight:700;color:var(--ink);line-height:1.25;letter-spacing:-.01em}
+
+/* ─────────────────────── SERP MOCKUP ─────────────────────── */
+.serp-wrap{background:var(--white);border:1px solid var(--ink-e);border-radius:var(--rl);overflow:hidden}
+.serp-bar{
+  background:#F1F3F4;border-bottom:1px solid var(--ink-e);
+  padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;
+}
+.serp-bar-left{display:flex;align-items:center;gap:10px}
+.serp-favicon{
+  width:28px;height:28px;border-radius:50%;
+  background:linear-gradient(135deg,#4285F4,#34A853,#FBBC04,#EA4335);
+  display:flex;align-items:center;justify-content:center;
+  font-size:12px;font-weight:700;color:#fff;flex-shrink:0
+}
+.serp-query{
+  background:var(--white);border:1px solid var(--ink-e);border-radius:100px;
+  padding:6px 16px;font-size:13px;color:var(--ink-4);min-width:280px;
+}
+.serp-bar-right{display:flex;gap:6px}
+.serp-tag{font-size:10.5px;font-weight:600;padding:3px 10px;border-radius:100px;background:var(--blue-l);color:var(--blue)}
+.serp-tag-green{background:var(--green-l);color:var(--green)}
+.serp-results{padding:16px}
+.serp-section-label{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-9);margin:0 0 10px;padding-left:4px}
+.serp-result{
+  padding:14px 16px;border-radius:var(--r);margin-bottom:8px;
+  border:1px solid var(--ink-f);transition:border-color .15s,background .15s;cursor:default
+}
+.serp-result:hover{border-color:var(--ink-e);background:#FDFCFB}
+.serp-result.serp-gap{border-color:rgba(224,90,56,.2);background:rgba(224,90,56,.02)}
+.serp-ad{background:#FEFAF8;border-color:#F0E8E4}
+.serp-result-top{display:flex;align-items:center;gap:8px;margin-bottom:4px}
+.serp-ad-pill{font-size:9.5px;font-weight:700;letter-spacing:.06em;padding:2px 6px;border:1px solid #D4A57A;border-radius:3px;color:#8A5C30}
+.serp-pos{
+  width:20px;height:20px;border-radius:50%;background:var(--ink-e);
+  display:flex;align-items:center;justify-content:center;
+  font-size:10px;font-weight:700;color:var(--ink-6);flex-shrink:0
+}
+.serp-pos-gap{background:var(--coral-l);color:var(--coral)}
+.serp-domain{font-size:12px;color:var(--green);font-weight:500}
+.serp-title{font-size:14.5px;font-weight:600;color:var(--blue);margin-bottom:3px;line-height:1.3}
+.serp-desc{font-size:13px;color:var(--ink-6);line-height:1.5;margin-bottom:8px}
+.serp-analysis{font-size:12px;color:var(--ink-6);background:var(--ink-f);padding:8px 12px;border-radius:var(--r);border-left:2px solid var(--ink-c);line-height:1.5}
+.serp-opp{color:var(--green);font-style:normal;font-weight:600}
+.serp-verdict{
+  background:var(--ink-2);padding:16px 20px;margin:16px 16px 16px;border-radius:var(--r);
+}
+.sv-label{font-size:9.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--coral);margin-bottom:6px}
+.sv-text{font-size:13px;color:rgba(255,255,255,.65);line-height:1.6}
+
+/* ─────────────────────── LINKEDIN MOCKUP ─────────────────────── */
+.li-mockup{background:var(--white);border:1px solid var(--ink-e);border-radius:var(--rl);overflow:hidden}
+.li-header{
+  background:#0A66C2;padding:14px 20px;
+  display:flex;align-items:center;gap:14px
+}
+.li-logo{
+  width:32px;height:32px;border-radius:4px;
+  background:#fff;display:flex;align-items:center;justify-content:center;
+  font-size:18px;font-weight:900;color:#0A66C2;flex-shrink:0
+}
+.li-title{font-size:14px;font-weight:700;color:#fff}
+.li-sub{font-size:11.5px;color:rgba(255,255,255,.6);margin-top:2px}
+.li-status{margin-left:auto}
+.li-badge{font-size:10px;font-weight:700;padding:4px 10px;border-radius:100px}
+.li-badge-draft{background:rgba(255,255,255,.15);color:#fff}
+.li-body{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.li-col{padding:20px 24px;border-right:1px solid var(--ink-e)}
+.li-col-right{border-right:none}
+.li-section-label{font-size:9.5px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-9);margin-bottom:14px}
+.li-field{margin-bottom:18px}
+.li-field-label{font-size:12px;font-weight:700;color:var(--ink);margin-bottom:8px}
+.li-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:6px}
+.li-tag{font-size:11px;font-weight:500;padding:3px 10px;border-radius:100px;transition:all .15s}
+.li-tag-on{background:#E8F0FA;color:var(--blue);border:1px solid #B8D0F0}
+.li-tag-off{background:#FEE8E8;color:#991B1B;border:1px solid #F5C0C0;text-decoration:line-through;opacity:.7}
+.li-field-note{font-size:11px;color:var(--ink-9);font-style:italic}
+.li-stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.li-stat{background:var(--ink-f);border-radius:var(--r);padding:12px 14px}
+.li-stat-v{font-family:var(--serif);font-size:17px;font-weight:700;color:var(--ink);line-height:1}
+.li-stat-l{font-size:10.5px;color:var(--ink-9);margin-top:4px}
+.li-ad-preview{background:var(--ink-f);border:1px solid var(--ink-e);border-radius:var(--r);overflow:hidden;margin-top:8px}
+.li-ad-img{height:72px;background:linear-gradient(135deg,#1A4D94,#0A66C2);display:flex;align-items:center;justify-content:center;font-size:32px}
+.li-ad-body{padding:12px 14px}
+.li-ad-company{font-size:10.5px;color:var(--ink-9);margin-bottom:4px}
+.li-ad-headline{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:4px;line-height:1.3}
+.li-ad-text{font-size:11.5px;color:var(--ink-6);margin-bottom:8px;line-height:1.5}
+.li-ad-cta{font-size:11.5px;font-weight:700;color:#0A66C2}
+
+/* ─────────────────────── ABM MESSAGE ─────────────────────── */
+.abm-wrap{display:flex;flex-direction:column;gap:12px}
+.abm-trigger{background:var(--amber-l);border:1px solid #E8C97A;border-radius:var(--rl);padding:14px 18px}
+.abm-trigger-label{font-size:9.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);margin-bottom:10px}
+.abm-trigger-content{display:flex;align-items:center;gap:12px}
+.abm-trigger-icon{font-size:20px;flex-shrink:0}
+.abm-trigger-title{font-size:14px;font-weight:700;color:var(--ink)}
+.abm-trigger-meta{font-size:11.5px;color:var(--ink-6);margin-top:2px}
+.abm-trigger-signal{margin-left:auto;font-size:11px;font-weight:700;color:var(--green);background:var(--green-l);padding:4px 12px;border-radius:100px;white-space:nowrap}
+.abm-message{background:var(--white);border:1px solid var(--ink-e);border-radius:var(--rl);overflow:hidden}
+.abm-msg-header{padding:14px 20px;border-bottom:1px solid var(--ink-f);display:flex;align-items:center;gap:12px;background:var(--ink-f)}
+.abm-avatar{width:36px;height:36px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#fff;flex-shrink:0}
+.abm-from{font-size:13px;font-weight:600;color:var(--ink)}
+.abm-channel{font-size:11px;color:var(--ink-9);margin-top:2px}
+.abm-msg-body{padding:20px 22px}
+.abm-msg-body p{font-size:14px;line-height:1.75;color:var(--ink-4);margin-bottom:12px}
+.abm-msg-body p:last-child{margin-bottom:0}
+.abm-msg-footer{padding:12px 22px;border-top:1px solid var(--ink-f);background:var(--ink-f)}
+.abm-msg-tags{display:flex;flex-wrap:wrap;gap:6px}
+.abm-tag{font-size:10.5px;font-weight:600;padding:3px 10px;border-radius:100px;background:var(--green-l);color:var(--green)}
+.abm-variants{background:var(--white);border:1px solid var(--ink-e);border-radius:var(--rl);overflow:hidden}
+.abm-var-label{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-9);padding:12px 16px;border-bottom:1px solid var(--ink-f);background:var(--ink-f)}
+.abm-var-grid{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.abm-var{padding:16px 20px}
+.abm-var-bad{border-right:1px solid var(--ink-f)}
+.abm-var-head{font-size:12.5px;font-weight:700;color:var(--ink);margin-bottom:8px}
+.abm-var-text{font-size:13px;color:var(--ink-6);line-height:1.6;margin-bottom:8px;font-style:italic;padding:10px 12px;border-radius:var(--r)}
+.abm-var-bad .abm-var-text{background:#FEF2F2}
+.abm-var-good .abm-var-text{background:var(--green-l)}
+.abm-var-why{font-size:11.5px;color:var(--ink-9);line-height:1.5}
+
+/* ─────────────────────── UNFAIR ADVANTAGE ─────────────────────── */
+.unfair-card{
+  background:var(--ink);border-radius:var(--rl);overflow:hidden;
+  position:relative;
+}
+.unfair-card::before{
+  content:'';position:absolute;top:-100px;right:-100px;
+  width:300px;height:300px;border-radius:50%;
+  background:radial-gradient(circle,rgba(224,90,56,.15),transparent 70%);
+  pointer-events:none;
+}
+.unfair-header{
+  padding:28px 32px 0;display:flex;align-items:flex-start;gap:18px;
+}
+.unfair-spark{font-size:32px;flex-shrink:0;margin-top:4px}
+.unfair-kicker{font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--coral);margin-bottom:8px}
+.unfair-title{font-family:var(--serif);font-size:24px;font-weight:700;color:#fff;line-height:1.2;letter-spacing:-.015em}
+.unfair-body{padding:24px 32px;display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.unfair-desc p{font-size:14px;color:rgba(255,255,255,.5);line-height:1.75;margin-bottom:12px}
+.unfair-desc p:last-child{margin-bottom:0}
+.unfair-desc em{color:rgba(255,255,255,.75);font-style:normal}
+.unfair-how-title{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--coral);margin-bottom:16px}
+.unfair-steps{display:flex;flex-direction:column;gap:12px}
+.unfair-step{display:flex;gap:12px;align-items:flex-start}
+.us-num{
+  width:24px;height:24px;border-radius:50%;
+  background:rgba(224,90,56,.2);border:1px solid rgba(224,90,56,.3);
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:700;color:var(--coral);flex-shrink:0;
+}
+.us-title{font-size:13px;font-weight:700;color:rgba(255,255,255,.85);margin-bottom:3px}
+.us-text{font-size:12.5px;color:rgba(255,255,255,.4);line-height:1.6}
+.unfair-footer{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  border-top:1px solid rgba(255,255,255,.07);
+  margin:0;
+}
+.uf-stat{padding:20px 24px;border-right:1px solid rgba(255,255,255,.05)}
+.uf-stat:last-child{border-right:none}
+.uf-v{font-family:var(--serif);font-size:22px;font-weight:700;color:var(--coral);line-height:1}
+.uf-l{font-size:10.5px;color:rgba(255,255,255,.3);margin-top:5px;line-height:1.3}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════ NAV ══ -->
+<nav id="nav">
+  <div class="nav-inner">
+    <div class="nav-brand">pangolin</div>
+    <div class="nav-links">
+      <button class="nav-link active" onclick="navScrollTo('cover')">Overview</button>
+      <button class="nav-link" onclick="navScrollTo('part1')">Diagnosis</button>
+      <button class="nav-link" onclick="navScrollTo('strategy')">Strategy</button>
+      <button class="nav-link" onclick="navScrollTo('measurement')">Measurement</button>
+      <button class="nav-link" onclick="navScrollTo('part2')">Team</button>
+      <button class="nav-link" onclick="navScrollTo('devplan')">Development</button>
+      <button class="nav-link" onclick="navScrollTo('proof')" style="color:var(--coral);border:1px solid rgba(224,90,56,.25);border-radius:100px">Proof ⚡</button>
+    </div>
+  </div>
+  <div class="nav-progress"><div class="nav-progress-bar" id="npbar"></div></div>
+</nav>
+
+<!-- ══════════════════════════════════ SIDEBAR ══ -->
+<aside id="sidebar">
+  <div class="sb-part">
+    <div class="sb-part-label">Part 1 — Client Strategy</div>
+    <a class="sb-item" onclick="navScrollTo('cover')"><span class="sb-dot"></span>Cover</a>
+    <a class="sb-item" onclick="navScrollTo('part1')"><span class="sb-dot"></span>Situation & Diagnosis</a>
+    <a class="sb-item" onclick="navScrollTo('strategy')"><span class="sb-dot"></span>90-Day Strategy</a>
+    <a class="sb-item" onclick="navScrollTo('channels')"><span class="sb-dot"></span>Channel Plan</a>
+    <a class="sb-item" onclick="navScrollTo('offer')"><span class="sb-dot"></span>The Offer</a>
+    <a class="sb-item" onclick="navScrollTo('experiments')"><span class="sb-dot"></span>Experiments</a>
+    <a class="sb-item" onclick="navScrollTo('measurement')"><span class="sb-dot"></span>Measurement</a>
+  </div>
+  <div class="sb-part" style="margin-top:24px">
+    <div class="sb-part-label">Part 2 — Team</div>
+    <a class="sb-item" onclick="navScrollTo('part2')"><span class="sb-dot"></span>Team Overview</a>
+    <a class="sb-item" onclick="navScrollTo('assignment')"><span class="sb-dot"></span>Assignment</a>
+    <a class="sb-item" onclick="navScrollTo('devplan')"><span class="sb-dot"></span>Development Plan</a>
+    <a class="sb-item" onclick="navScrollTo('content')"><span class="sb-dot"></span>Content System</a>
+  </div>
+  <div class="sb-part" style="margin-top:24px">
+    <div class="sb-part-label" style="color:var(--coral)">Execution Proof ⚡</div>
+    <a class="sb-item" onclick="navScrollTo('proof')"><span class="sb-dot"></span>SERP Landscape</a>
+    <a class="sb-item" onclick="navScrollTo('proof-section')"><span class="sb-dot"></span>LinkedIn Targeting</a>
+    <a class="sb-item" onclick="navScrollTo('proof-section')"><span class="sb-dot"></span>ABM Message</a>
+    <a class="sb-item" onclick="navScrollTo('proof-section')"><span class="sb-dot"></span>Unfair Advantage ⚡</a>
+  </div>
+</aside>
+
+<!-- ══════════════════════════════════ READING BAR ══ -->
+<div id="reading-bar"><div id="reading-bar-fill"></div></div>
+
+<!-- ══════════════════════════════════ MAIN ══ -->
+<main id="main">
+
+<!-- ────────────────── COVER ────────────────── -->
+<section id="cover">
+  <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.03) 1px,transparent 1px);background-size:32px 32px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,#000 40%,transparent 100%);pointer-events:none"></div>
+  <div style="position:relative;z-index:1;width:100%">
+    <div class="cover-eyebrow">Growth Marketing Lead · Assignment Submission</div>
+    <h1 class="cover-h1">Stop attracting<br>the wrong<br><em>audience entirely.</em></h1>
+    <p class="cover-sub">A 90-day revenue strategy and team plan for a B2B HR Analytics SaaS client — built around the only diagnosis that matters.</p>
+    <div class="cover-stats">
+      <div class="cstat"><div class="cstat-v">3,500</div><div class="cstat-l">Monthly Visits</div><div class="cstat-s">Low-intent organic</div></div>
+      <div class="cstat"><div class="cstat-v">0.34%</div><div class="cstat-l">Demo CVR</div><div class="cstat-s">12 requests, 1 close</div></div>
+      <div class="cstat"><div class="cstat-v">$8K</div><div class="cstat-l">Budget/mo</div><div class="cstat-s">Fully reallocatable</div></div>
+      <div class="cstat"><div class="cstat-v">90d</div><div class="cstat-l">To 25 demos</div><div class="cstat-s">VP+ qualified only</div></div>
+    </div>
+    <div class="cover-scroll">
+      <div class="cover-scroll-arrow"></div>
+      <div class="cover-scroll-text">Scroll to explore</div>
+    </div>
+  </div>
+</section>
+
+<!-- ────────────────── PART 1 BAND ────────────────── -->
+<div class="sec-band" id="part1">
+  <div class="sec-band-inner">
+    <div class="sec-band-num">01</div>
+    <div>
+      <div class="sec-band-kicker">Part One</div>
+      <div class="sec-band-title">Client Growth Strategy</div>
+      <div class="sec-band-desc">Diagnosis, 90-day strategy, channel plan, offer design, experiments, and measurement.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ────────────────── SITUATION ────────────────── -->
+<div class="page-section">
+  <div class="content-wrap">
+
+    <div class="reveal">
+      <div class="eyebrow">Situation Snapshot</div>
+      <div class="h2">Where things stand at Day 90</div>
+    </div>
+
+    <div class="metrics-row mt24 reveal">
+      <div class="metric">
+        <div class="metric-label">Monthly Traffic</div>
+        <div class="metric-value">3,500</div>
+        <div class="metric-sub">Organic, informational intent</div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">Demo CVR</div>
+        <div class="metric-value">0.34%</div>
+        <div class="metric-sub">12 requests / month</div>
+        <div class="metric-flag flag-r">↑ Target: 25+ qualified</div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">Pipeline</div>
+        <div class="metric-value">$180K</div>
+        <div class="metric-sub">6 open opportunities</div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">Closed Revenue</div>
+        <div class="metric-value">$30K</div>
+        <div class="metric-sub">1 deal, $30K ACV</div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">Current Spend</div>
+        <div class="metric-value">$3K</div>
+        <div class="metric-sub">Google Search only</div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">Available Budget</div>
+        <div class="metric-value">$8K</div>
+        <div class="metric-sub">+$5K headroom</div>
+        <div class="metric-flag flag-g">Fully reallocatable</div>
+      </div>
+    </div>
+
+    <div class="reveal mt32">
+      <div class="eyebrow">Current Funnel — Where It Breaks</div>
+      <div class="funnel" id="funnel">
+        <div class="f-row">
+          <div class="f-bar-wrap"><div class="f-bar b0" style="width:100%">3,500 monthly visitors — informational intent</div></div>
+          <div class="f-meta"><div class="f-v">3,500 / mo</div><div class="f-s">Searching "how to improve retention"</div><div class="f-n r">HR coordinators, not buyers</div></div>
+        </div>
+        <div class="f-connector"><svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M7 0v7M3 4l4 4 4-4" stroke="#BBB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="f-row">
+          <div class="f-bar-wrap"><div class="f-bar b1" style="width:68%">~250 engaged page visitors</div></div>
+          <div class="f-meta"><div class="f-v">~250</div><div class="f-s">Scrolled / viewed product content</div></div>
+        </div>
+        <div class="f-connector"><svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M7 0v7M3 4l4 4 4-4" stroke="#BBB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="f-row">
+          <div class="f-bar-wrap"><div class="f-bar b2" style="width:34%">12 demo requests — 0.34% CVR</div></div>
+          <div class="f-meta"><div class="f-v">12 / mo</div><div class="f-s">Demo form fills</div><div class="f-n r">Sales: "mostly tire-kickers"</div></div>
+        </div>
+        <div class="f-connector"><svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M7 0v7M3 4l4 4 4-4" stroke="#BBB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="f-row">
+          <div class="f-bar-wrap"><div class="f-bar b3" style="width:22%">~1–2 real VP+ buyers</div></div>
+          <div class="f-meta"><div class="f-v">1–2 / mo</div><div class="f-s">Actual ICP — budget authority</div><div class="f-n d">Almost invisible in the funnel</div></div>
+        </div>
+      </div>
+      <p class="f-caption">The funnel converts. It just converts the wrong people. This is not a CVR problem — it is an audience architecture problem.</p>
+    </div>
+
+    <hr class="divider">
+
+    <!-- DIAGNOSIS -->
+    <div class="task-hd reveal">
+      <div class="task-badge tc">1</div>
+      <div class="task-meta">
+        <div class="task-tag">Task 1</div>
+        <div class="task-title">Diagnosis</div>
+        <div class="task-desc">Pick one core problem. Support it. Make it sharp.</div>
+      </div>
+    </div>
+
+    <div class="diagnosis reveal">
+      <div class="diag-label">Core Diagnosis — One Statement</div>
+      <div class="diag-text">This is not a traffic problem. Not a CVR problem.<br>It is an <em>ICP targeting problem</em> — every channel, every keyword, every ad is optimised to attract people who will never have the authority or urgency to buy.</div>
+    </div>
+
+    <p class="reveal">Every signal in this engagement traces back to one upstream failure. The previous strategy was built around content volume and audience breadth — treating "HR" as a category rather than isolating the specific buyer with budget authority. The machine is working perfectly. For the wrong people.</p>
+
+    <div class="reveal mt24">
+      <div class="eyebrow mb8">Evidence — Why This Is the Right Diagnosis</div>
+      <div class="evidence">
+        <div class="ev-row header">
+          <div class="ev-num"></div>
+          <div class="ev-cell">Signal from the data</div>
+          <div class="ev-cell">Why it points to ICP mismatch</div>
+        </div>
+        <div class="ev-row">
+          <div class="ev-num">1</div>
+          <div class="ev-cell"><span class="ev-signal">SEO topics: "improve retention," "HR metrics to track"</span><br>Informational-intent queries searched by ICs self-educating — not executives evaluating software vendors.</div>
+          <div class="ev-cell ev-why">Traffic is structurally wrong before a visitor even reaches the page. No CRO fix changes who's arriving.</div>
+        </div>
+        <div class="ev-row">
+          <div class="ev-num">2</div>
+          <div class="ev-cell"><span class="ev-signal">LinkedIn targeting: "HR managers"</span><br>HR managers at 200–1K employee companies rarely hold software purchase authority — that sits with VP HR or CHRO.</div>
+          <div class="ev-cell ev-why">Paid spend is aimed at the wrong seniority tier entirely. Every impression is wasted on non-buyers.</div>
+        </div>
+        <div class="ev-row">
+          <div class="ev-num">3</div>
+          <div class="ev-cell"><span class="ev-signal">Sales feedback: "leads are coordinators, tire-kickers"</span><br>Downstream confirmation of upstream failure. Sales isn't the bottleneck — feed quality is.</div>
+          <div class="ev-cell ev-why">More volume or SDR capacity won't help. The input is wrong. Only fixing the source solves this.</div>
+        </div>
+        <div class="ev-row">
+          <div class="ev-num">4</div>
+          <div class="ev-cell"><span class="ev-signal">12 demos / month, 1 close (~8% rate)</span><br>8% close rate is not catastrophic. The product clearly works for buyers who actually fit.</div>
+          <div class="ev-cell ev-why">The close rate is not the problem — the audience composition is. Fix targeting; close rate self-corrects.</div>
+        </div>
+        <div class="ev-row">
+          <div class="ev-num">5</div>
+          <div class="ev-cell"><span class="ev-signal">No email nurture, no ABM</span><br>VP buyers research over weeks, involve finance, need multiple touchpoints before committing.</div>
+          <div class="ev-cell ev-why">Even when the right buyer finds the product, there's no infrastructure to hold their attention or move them forward.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout reveal">
+      <div class="callout-label">Strategic Implication</div>
+      <p>The fix is not incremental. Layering more budget onto the current motion produces more of the same wrong leads, faster. The entire acquisition engine must restart around one definition: <strong>VP HR or CHRO at a 200–1,000 employee company with an active HR transformation initiative.</strong> Everything downstream follows from this.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ────────────────── STRATEGY BAND ────────────────── -->
+<div class="sec-band" id="strategy">
+  <div class="sec-band-inner">
+    <div class="sec-band-num"></div>
+    <div>
+      <div class="sec-band-kicker">Task 2</div>
+      <div class="sec-band-title">90-Day Growth Strategy</div>
+      <div class="sec-band-desc">Three big strategic bets — not tactics. Each one directly addresses the diagnosis.</div>
+    </div>
+  </div>
+</div>
+
+<div class="page-section">
+  <div class="content-wrap">
+
+    <!-- CURRENT VS PROPOSED -->
+    <div class="reveal">
+      <div class="eyebrow mb8">Current vs Proposed GTM Motion</div>
+      <div class="compare">
+        <div class="cmp-hd c0">Dimension</div>
+        <div class="cmp-hd c1">Current State</div>
+        <div class="cmp-hd c2">Proposed State</div>
+        <div class="cmp-row">
+          <div class="cmp-cell">Target Audience</div>
+          <div class="cmp-cell">HR managers, coordinators — any HR topic searcher</div>
+          <div class="cmp-cell">VP HR / CHRO at 200–1K companies with active HR initiatives</div>
+        </div>
+        <div class="cmp-row">
+          <div class="cmp-cell">Content Intent</div>
+          <div class="cmp-cell">"How to improve retention" — informational, IC-level</div>
+          <div class="cmp-cell">"HR Analytics ROI Benchmark" — decision-stage, executive</div>
+        </div>
+        <div class="cmp-row">
+          <div class="cmp-cell">Primary Offer</div>
+          <div class="cmp-cell">Book a demo — cold ask, high commitment</div>
+          <div class="cmp-cell">Benchmark Report — value-first, self-qualifying</div>
+        </div>
+        <div class="cmp-row">
+          <div class="cmp-cell">Channel Mix</div>
+          <div class="cmp-cell">SEO blog + broad LinkedIn + Google Search</div>
+          <div class="cmp-cell">LinkedIn Paid (VP+ targeting) + ABM + Google (refocused)</div>
+        </div>
+        <div class="cmp-row">
+          <div class="cmp-cell">Nurture</div>
+          <div class="cmp-cell">None</div>
+          <div class="cmp-cell">3-email sequence: asset → case study → benchmark review CTA</div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- BIG BETS -->
+    <div class="reveal">
+      <div class="eyebrow mb8">Strategic Approach — 3 Big Bets</div>
+      <p style="font-size:13px;color:var(--ink-9);margin-bottom:20px">Click each bet to expand the reasoning.</p>
+    </div>
+
+    <div class="bets reveal">
+      <div class="bet">
+        <div class="bet-head" onclick="toggleBet(this)">
+          <div class="bet-head-l">
+            <div class="bet-n">1</div>
+            <div>
+              <div class="bet-title">Dismantle the broad ICP. Rebuild around budget authority.</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px">
+            <div class="bet-tag btag-coral">Audience Re-Architecture</div>
+            <div class="bet-chevron">▼</div>
+          </div>
+        </div>
+        <div class="bet-body">
+          <p>Every acquisition channel is optimised for <strong>category interest</strong>, not <strong>purchase authority</strong>. Bet One is a hard ICP reset: stop targeting "people in HR," start targeting "VP HR at growth-stage mid-market companies with a live initiative." Pause informational SEO content (it will continue bringing coordinator traffic regardless), rewrite ad audiences from job function to seniority + title + company size, and brief the ABM list build around trigger events — headcount growth signals, HRIS job listings, recent funding rounds.</p>
+          <p>Changing the audience definition is the highest-leverage single action available. Everything else compounds from this.</p>
+          <div class="bet-chips">
+            <span class="chip">Pause informational SEO</span>
+            <span class="chip">Seniority-filtered LinkedIn</span>
+            <span class="chip">Intent-trigger ABM list build</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="bet">
+        <div class="bet-head" onclick="toggleBet(this)">
+          <div class="bet-head-l">
+            <div class="bet-n">2</div>
+            <div>
+              <div class="bet-title">Replace the cold demo ask. Create a value-first entry point.</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px">
+            <div class="bet-tag btag-blue">Offer Repositioning</div>
+            <div class="bet-chevron">▼</div>
+          </div>
+        </div>
+        <div class="bet-body">
+          <p>Asking a VP who doesn't know you to "book a demo" produces exactly the 0.34% CVR we're seeing. Senior buyers need to perceive value before they commit time. Bet Two is the <strong>HR Analytics Benchmark Report</strong> — benchmarking time-to-hire, HR-to-headcount ratios, and cost-per-hire by company size and industry.</p>
+          <p>A VP who downloads it has signalled analytical maturity and peer benchmarking intent. The 6-field form confirms ICP fit automatically. The asset anchors a 3-email nurture ending in a "benchmark review" — the demo, renamed. The demo is the earned conclusion, not the opening ask.</p>
+          <div class="bet-chips">
+            <span class="chip">Benchmark Report TOFU asset</span>
+            <span class="chip">6-field qualifying form</span>
+            <span class="chip">3-email nurture sequence</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="bet">
+        <div class="bet-head" onclick="toggleBet(this)">
+          <div class="bet-head-l">
+            <div class="bet-n">3</div>
+            <div>
+              <div class="bet-title">Build a 50-account ABM micro-motion. Bypass paid entirely.</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px">
+            <div class="bet-tag btag-green">Account-Based Acquisition</div>
+            <div class="bet-chevron">▼</div>
+          </div>
+        </div>
+        <div class="bet-body">
+          <p>At $30K ACV, paid reach alone is too slow to hit 25 qualified demos by Day 90. Bet Three introduces a narrow ABM motion: 50 named accounts via LinkedIn Sales Navigator, mapped to the VP HR at each, then a 3-touch sequence — content engagement (warm-up), connection request, personalised message anchored to a trigger (headcount growth, HRIS job post, sector benchmark).</p>
+          <p>Account-selected, trigger-based, insight-led — not mass DM blasting. At 10% booking rate: 5 qualified demos per cycle from ABM alone. Scale to 150 accounts in Month 2 once the sequence is validated.</p>
+          <div class="bet-chips">
+            <span class="chip">50 named target accounts</span>
+            <span class="chip">3-touch LinkedIn sequence</span>
+            <span class="chip">Trigger-based personalisation</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider" id="channels">
+
+    <!-- CHANNEL PLAN -->
+    <div class="reveal">
+      <div class="eyebrow mb8">Channel Plan — $8K / Month</div>
+      <div class="h3">Ruthlessly scoped to three channels.</div>
+      <p class="mt8">Every excluded channel has a reason. Budget follows signal quality, not familiarity.</p>
+    </div>
+
+    <div class="channels reveal mt24">
+      <div class="ch">
+        <div class="ch-icon">💼</div>
+        <div class="ch-body">
+          <div class="ch-title">LinkedIn Ads — Sponsored Content + Lead Gen Forms</div>
+          <div class="ch-desc"><strong>Role:</strong> Awareness → Benchmark Report download. The only channel that allows simultaneous filtering on job title + seniority + company size. VP HR at 200–500 employee companies is a buildable, targetable audience. Lead Gen Forms reduce download friction.</div>
+          <div class="ch-why-not">Why NOT Meta or Display: no reliable seniority filter for B2B. CPM wasted on coordinators and job seekers.</div>
+        </div>
+        <div class="ch-budget"><div class="ch-budget-v">$4,000</div><div class="ch-budget-l">per month</div></div>
+      </div>
+      <div class="ch">
+        <div class="ch-icon">🔍</div>
+        <div class="ch-body">
+          <div class="ch-title">Google Search — Buyer-Intent Refocus</div>
+          <div class="ch-desc"><strong>Role:</strong> High-intent demand capture. Pause informational terms entirely. Activate commercial-intent queries: "HR analytics platform mid-market," "[competitor] alternative," "HRIS analytics software." These visitors are in active vendor evaluation — close them before a competitor does.</div>
+          <div class="ch-why-not">Why NOT more spend here: current keywords attract researchers. Spend smarter, not more.</div>
+        </div>
+        <div class="ch-budget"><div class="ch-budget-v">$2,500</div><div class="ch-budget-l">per month</div></div>
+      </div>
+      <div class="ch">
+        <div class="ch-icon">🎯</div>
+        <div class="ch-body">
+          <div class="ch-title">ABM Outreach — LinkedIn Sales Nav + Apollo</div>
+          <div class="ch-desc"><strong>Role:</strong> Direct pipeline creation. Bypasses the paid funnel entirely. For a $30K ACV product, 5 meetings from 50 targeted accounts is extremely ROI-positive. Personalised to a specific trigger — structurally higher reply rates than broadcast messaging.</div>
+          <div class="ch-why-not">Why NOT mass outreach tools: destroys sender reputation and generates coordinator-level replies anyway.</div>
+        </div>
+        <div class="ch-budget"><div class="ch-budget-v">$1,000</div><div class="ch-budget-l">per month</div></div>
+      </div>
+    </div>
+    <span class="inline-note">$500 held in reserve: LinkedIn InMail retargeting on ABM non-responders + Benchmark Report page visitors who didn't convert (Weeks 4–6).</span>
+
+    <hr class="divider" id="offer">
+
+    <!-- THE OFFER -->
+    <div class="reveal">
+      <div class="eyebrow mb8">The Offer</div>
+      <div class="h3">What we're actually asking them to do.</div>
+      <p class="mt8">Not "book a demo." A high-value asset that pre-qualifies buyers before a human touches the lead.</p>
+    </div>
+
+    <div class="offer-card reveal mt24">
+      <div>
+        <div class="offer-badge">Flagship Lead Magnet</div>
+        <div class="offer-title">"The Mid-Market HR Analytics Benchmark Report: How Companies Like Yours Measure What Matters"</div>
+        <div class="offer-desc">A data-backed report benchmarking time-to-hire, HR-to-headcount ratio, and cost-per-hire by company size (200–500 / 500–1,000) and sector. Gated behind a 6-field form: name, company, job title, company size, industry, primary HR challenge.</div>
+      </div>
+      <div class="offer-stats">
+        <div class="ostat"><div class="ostat-v">6</div><div class="ostat-l">Qualifying fields</div></div>
+        <div class="ostat"><div class="ostat-v">3</div><div class="ostat-l">Nurture emails</div></div>
+        <div class="ostat"><div class="ostat-v">VP+</div><div class="ostat-l">Self-selected ICP</div></div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px" class="reveal">
+      <div style="background:var(--white);border:1px solid var(--ink-e);border-radius:var(--r);padding:16px 18px">
+        <div class="label mb8" style="color:var(--coral)">Attracts Senior Buyers</div>
+        <p style="font-size:13px;margin:0">Executives use benchmarks to build internal business cases. A coordinator has no use for peer benchmarking — a VP uses it in a CFO meeting. Self-selection is structural.</p>
+      </div>
+      <div style="background:var(--white);border:1px solid var(--ink-e);border-radius:var(--r);padding:16px 18px">
+        <div class="label mb8" style="color:var(--blue)">Filters Junior Leads</div>
+        <p style="font-size:13px;margin:0">Form captures job title and company size. Anyone below VP level or outside 200–1K employees is auto-flagged at routing. Qualification happens before any human effort is invested.</p>
+      </div>
+      <div style="background:var(--white);border:1px solid var(--ink-e);border-radius:var(--r);padding:16px 18px">
+        <div class="label mb8" style="color:var(--green)">Leads Into the Demo</div>
+        <p style="font-size:13px;margin:0">Email 1: report + personalised peer gap insight. Email 2: case study. Email 3: "20-min benchmark review" — the demo, renamed. Engagement rate is 3–4× vs a cold demo ask.</p>
+      </div>
+    </div>
+
+    <hr class="divider" id="experiments">
+
+    <!-- EXPERIMENTS -->
+    <div class="reveal">
+      <div class="eyebrow mb8">Experimentation Roadmap</div>
+      <div class="h3">Top 3 highest-priority experiments.</div>
+      <p class="mt8 mb8" style="font-size:13px;color:var(--ink-9)">Click each experiment to expand the setup and success criteria.</p>
+    </div>
+
+    <div class="exps reveal">
+      <div class="exp">
+        <div class="exp-hd" onclick="toggleExp(this)">
+          <div class="exp-hd-l"><div class="exp-n">01</div><div class="exp-name">LinkedIn Audience Seniority Split</div></div>
+          <div style="display:flex;align-items:center;gap:10px"><div class="exp-when">Weeks 1–4</div><div class="exp-chev">▼</div></div>
+        </div>
+        <div class="exp-cols">
+          <div class="exp-col"><div class="exp-clabel">Hypothesis</div><div class="exp-ctext">Targeting VP/Director of HR at 200–1K companies produces ≥4× the qualified demo rate vs "HR manager" broad targeting — seniority filtering selects for budget authority, not just job function.</div></div>
+          <div class="exp-col"><div class="exp-clabel">Test Setup</div><div class="exp-ctext">Two LinkedIn campaigns, equal spend ($1K each). Control: current broad HR manager targeting. Test: VP HR / CHRO / HR Director, company size 200–1,000, Benchmark Report as offer. Run ≥3 weeks minimum for adequate reach.</div></div>
+          <div class="exp-col"><div class="exp-clabel">Success Metric</div><div class="exp-ctext">Test group: ≥40% of leads at VP+ seniority (vs est. &lt;5% in control). Cost per qualified lead &lt;$250. On success: 100% of LinkedIn budget moves to test audience by Day 28.</div></div>
+        </div>
+      </div>
+
+      <div class="exp">
+        <div class="exp-hd" onclick="toggleExp(this)">
+          <div class="exp-hd-l"><div class="exp-n">02</div><div class="exp-name">Benchmark Report vs Demo CTA — Landing Page Test</div></div>
+          <div style="display:flex;align-items:center;gap:10px"><div class="exp-when">Weeks 2–6</div><div class="exp-chev">▼</div></div>
+        </div>
+        <div class="exp-cols">
+          <div class="exp-col"><div class="exp-clabel">Hypothesis</div><div class="exp-ctext">A dedicated Benchmark Report landing page converts VP-level traffic at ≥3% vs the current &lt;0.5% demo page — because it offers tangible value before asking for time, removing the principal barrier for a senior buyer with no prior brand relationship.</div></div>
+          <div class="exp-col"><div class="exp-clabel">Test Setup</div><div class="exp-ctext">Two destinations for LinkedIn traffic (50/50 split). Control: current homepage / demo page. Test: standalone Benchmark Report landing page with 6-field form. Track CVR and lead seniority separately — quality over volume.</div></div>
+          <div class="exp-col"><div class="exp-clabel">Success Metric</div><div class="exp-ctext">Report page achieves ≥3% CVR on VP+ traffic. Downstream: downloaders who complete nurture convert to demo at ≥15% within 14 days. On failure: test shorter sequence or direct calendar link in Email 2.</div></div>
+        </div>
+      </div>
+
+      <div class="exp">
+        <div class="exp-hd" onclick="toggleExp(this)">
+          <div class="exp-hd-l"><div class="exp-n">03</div><div class="exp-name">ABM Message Framing — Insight-Led vs Product-Led</div></div>
+          <div style="display:flex;align-items:center;gap:10px"><div class="exp-when">Weeks 3–8</div><div class="exp-chev">▼</div></div>
+        </div>
+        <div class="exp-cols">
+          <div class="exp-col"><div class="exp-clabel">Hypothesis</div><div class="exp-ctext">Outreach opening with a specific sector benchmark insight generates ≥2× reply rate vs product-capability framing — because it demonstrates knowledge of the prospect's context rather than the sender's interests.</div></div>
+          <div class="exp-col"><div class="exp-clabel">Test Setup</div><div class="exp-ctext">Split 50 accounts: 25 receive insight-led outreach ("Companies in your sector average X days to fill this role"), 25 receive product-capability framing. Identical sequence structure. Track reply rate, meeting booked rate, reply quality.</div></div>
+          <div class="exp-col"><div class="exp-clabel">Success Metric</div><div class="exp-ctext">Insight-led group: ≥20% reply rate and ≥2 meetings from 25 accounts within 6 weeks. On success: insight-led becomes the standard template, scaled to 150 accounts in Month 2.</div></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ────────────────── MEASUREMENT BAND ────────────────── -->
+<div class="sec-band" id="measurement">
+  <div class="sec-band-inner">
+    <div class="sec-band-num"></div>
+    <div>
+      <div class="sec-band-kicker">Task 3</div>
+      <div class="sec-band-title">Measurement Plan</div>
+      <div class="sec-band-desc">Leading indicators that catch problems early. Lagging indicators that confirm revenue impact. Kill criteria with no vague answers.</div>
+    </div>
+  </div>
+</div>
+
+<div class="page-section">
+  <div class="content-wrap">
+
+    <div class="meas reveal">
+      <div class="mcard">
+        <div class="mcard-hd"><div class="mcard-title">Leading Indicators</div><div class="mcard-sub">Tracked weekly — forward-looking signals</div></div>
+        <div class="m-row"><div class="m-name">% VP+ in demo requests</div><div class="m-target">≥60% by Wk 8</div></div>
+        <div class="m-row"><div class="m-name">LinkedIn CTR (VP-targeted ads)</div><div class="m-target">≥0.6%</div></div>
+        <div class="m-row"><div class="m-name">Benchmark Report downloads (VP-qualified)</div><div class="m-target">≥20 / week by Wk 6</div></div>
+        <div class="m-row"><div class="m-name">ABM sequence reply rate</div><div class="m-target">≥15% by Wk 6</div></div>
+        <div class="m-row"><div class="m-name">Nurture email → demo click rate</div><div class="m-target">≥12% by Wk 8</div></div>
+      </div>
+      <div class="mcard">
+        <div class="mcard-hd"><div class="mcard-title">Lagging Indicators</div><div class="mcard-sub">Tracked monthly — revenue outcomes</div></div>
+        <div class="m-row"><div class="m-name">Qualified demos / month</div><div class="m-target">8 → 16 → 25</div></div>
+        <div class="m-row"><div class="m-name">Qualified pipeline added</div><div class="m-target">$60K → $150K → $300K</div></div>
+        <div class="m-row"><div class="m-name">Cost per qualified demo</div><div class="m-target">&lt;$600 → &lt;$450 → &lt;$320</div></div>
+        <div class="m-row"><div class="m-name">Demo → proposal rate</div><div class="m-target">≥30% → ≥35% → ≥40%</div></div>
+        <div class="m-row"><div class="m-name">Closed revenue (cumulative)</div><div class="m-target">$30K → $60K → $120K</div></div>
+      </div>
+    </div>
+
+    <div class="reveal mt32">
+      <div class="eyebrow mb16">Kill Criteria — Specific Pivot Triggers</div>
+      <div class="kills">
+        <div class="kill">
+          <div class="kill-day"><div class="kd-l">Day</div><div class="kd-v">28</div></div>
+          <div class="kill-body">
+            <div class="kill-title">VP+ seniority in LinkedIn leads &lt;30%</div>
+            <div class="kill-text">Targeting or creative is not reaching the right seniority tier. Audience architecture has failed at the source.</div>
+            <span class="kill-pivot">↳ Pivot: Rebuild audience from Sales Navigator lookalikes seeded from the 1 closed deal. Shift to direct-to-landing-page traffic. Pause Lead Gen Forms. Isolate each variable independently before re-scaling.</span>
+          </div>
+        </div>
+        <div class="kill">
+          <div class="kill-day"><div class="kd-l">Day</div><div class="kd-v">45</div></div>
+          <div class="kill-body">
+            <div class="kill-title">Benchmark Report → demo conversion &lt;8%</div>
+            <div class="kill-text">Downloads are happening but the bridge to demo is broken. The nurture sequence is not doing its job.</div>
+            <span class="kill-pivot">↳ Pivot: Replace 3-email automation with a single founder/CEO personalised email + direct Calendly link. Test whether white-glove handoff outperforms automated nurture for this buyer tier.</span>
+          </div>
+        </div>
+        <div class="kill">
+          <div class="kill-day"><div class="kd-l">Day</div><div class="kd-v">60</div></div>
+          <div class="kill-body">
+            <div class="kill-title">Cumulative qualified demos &lt;10, pipeline &lt;$120K</div>
+            <div class="kill-text">The paid + ABM motion is not generating sufficient volume. Channels are not finding enough of the right buyers at this budget.</div>
+            <span class="kill-pivot">↳ Pivot: Redirect $3K/month into co-marketing with an HR consultant, HRIS implementation partner, or HR community (People Managing People, HR Brew). Their warm audience bypasses cold channel acquisition entirely.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ────────────────── PART 2 BAND ────────────────── -->
+<div class="sec-band" id="part2">
+  <div class="sec-band-inner">
+    <div class="sec-band-num">02</div>
+    <div>
+      <div class="sec-band-kicker">Part Two</div>
+      <div class="sec-band-title">Team Capability Analysis</div>
+      <div class="sec-band-desc">Who owns this client, what gap to close, and how to build the team's capability at scale.</div>
+    </div>
+  </div>
+</div>
+
+<div class="page-section">
+  <div class="content-wrap">
+
+    <div class="reveal">
+      <div class="eyebrow mb16">Team Overview</div>
+      <div class="profiles">
+        <div class="profile">
+          <div class="p-hd">
+            <div class="p-av" style="background:#185FA5">A</div>
+            <div><div class="p-name">Strategist A</div><div class="p-yrs">2 years</div></div>
+          </div>
+          <div class="p-body">
+            <div class="p-slabel">Strengths</div>
+            <div class="p-chips"><span class="pc s">Google Ads</span><span class="pc s">Meta Ads</span><span class="pc s">A/B Testing</span></div>
+            <div class="p-slabel">Gaps</div>
+            <div class="p-chips"><span class="pc g">ABM Strategy</span><span class="pc g">Hypothesis Design</span></div>
+          </div>
+        </div>
+        <div class="profile">
+          <div class="p-hd">
+            <div class="p-av" style="background:#666">B</div>
+            <div><div class="p-name">Strategist B</div><div class="p-yrs">1 year</div></div>
+          </div>
+          <div class="p-body">
+            <div class="p-slabel">Strengths</div>
+            <div class="p-chips"><span class="pc s">Writing</span><span class="pc s">SEO Strategy</span><span class="pc s">Content</span></div>
+            <div class="p-slabel">Gaps</div>
+            <div class="p-chips"><span class="pc g">Paid Ads</span><span class="pc g">Funnel Analysis</span><span class="pc g">Automation</span></div>
+          </div>
+        </div>
+        <div class="profile selected">
+          <div class="p-hd">
+            <div class="p-av" style="background:var(--coral)">A</div>
+            <div><div class="p-name">Strategist A</div><div class="p-yrs">Assigned</div></div>
+            <span class="sel-pill">Selected</span>
+          </div>
+          <div class="p-body">
+            <p style="font-size:13px;color:var(--ink-6);margin:0;line-height:1.6">Paid ads + A/B testing are the core execution requirements. These cannot be learned on the job under a 90-day revenue target. A's gap is coachable in 30 days.</p>
+          </div>
+        </div>
+      </div>
+      <p class="inline-note">Strategist C (6 months) excluded — this engagement requires independent execution from Week 1. Oversight burden would exceed the Lead's available capacity.</p>
+    </div>
+
+    <hr class="divider" id="assignment">
+
+    <!-- TASK 1 -->
+    <div class="task-hd reveal">
+      <div class="task-badge tc">1</div>
+      <div class="task-meta">
+        <div class="task-tag">Task 1</div>
+        <div class="task-title">Capability Gaps & Client Assignment</div>
+      </div>
+    </div>
+
+    <div class="callout reveal">
+      <div class="callout-label">Assignment Decision</div>
+      <p><strong>Strategist A owns this client.</strong> The proposed strategy is paid-channel-heavy and experiment-driven. A's background in Google/Meta ads plus A/B testing aligns directly with the primary execution requirements — LinkedIn campaign setup, audience experimentation, and rapid performance analysis. These are non-negotiable on a 90-day revenue target.</p>
+    </div>
+
+    <div style="border:1px solid var(--ink-e);border-radius:var(--rl);overflow:hidden;margin:20px 0" class="reveal">
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;background:var(--ink-2)">
+        <div style="padding:10px 16px;font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4)">Strategist</div>
+        <div style="padding:10px 16px;font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4)">Critical Gap</div>
+        <div style="padding:10px 16px;font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4)">Risk Level</div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;border-bottom:1px solid var(--ink-f);background:rgba(230,244,237,.3)">
+        <div style="padding:14px 16px;font-weight:700;font-size:13px;color:var(--green)">A ✓ Assigned</div>
+        <div style="padding:14px 16px;font-size:13px;color:var(--ink-6);line-height:1.5">ABM strategy + hypothesis design — the same root cause: campaign-level thinking, not account-level thinking.</div>
+        <div style="padding:14px 16px"><span class="pc s">Manageable — coachable in 30 days</span></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;border-bottom:1px solid var(--ink-f)">
+        <div style="padding:14px 16px;font-weight:700;font-size:13px">B</div>
+        <div style="padding:14px 16px;font-size:13px;color:var(--ink-6);line-height:1.5">No paid ads or funnel analysis. Would need to learn the primary channel while executing against a hard deadline.</div>
+        <div style="padding:14px 16px"><span class="pc g">High — execution risk from Day 1</span></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr">
+        <div style="padding:14px 16px;font-weight:700;font-size:13px">C</div>
+        <div style="padding:14px 16px;font-size:13px;color:var(--ink-6);line-height:1.5">Junior across the board. Oversight burden would dominate the Lead's time — converting a client engagement into a coaching engagement.</div>
+        <div style="padding:14px 16px"><span class="pc g">Very High — unsustainable</span></div>
+      </div>
+    </div>
+
+    <div class="callout blue reveal">
+      <div class="callout-label">#1 Skill Gap to Close — Strategist A</div>
+      <p><strong>ABM strategy and hypothesis design — the same root cause.</strong> A thinks in campaigns (audiences, budgets, bids) but not in accounts (named targets, triggers, personalised sequences). Until A can think at the account level, the ABM motion either won't launch or will be executed as mass outreach — defeating its purpose. The vague hypothesis problem is the same: campaign thinking produces directional guesses, not testable predictions. Fixing the mental model fixes both.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ────────────────── DEV PLAN BAND ────────────────── -->
+<div class="sec-band" id="devplan">
+  <div class="sec-band-inner">
+    <div class="sec-band-num"></div>
+    <div>
+      <div class="sec-band-kicker">Task 2</div>
+      <div class="sec-band-title">30-Day Development Plan</div>
+      <div class="sec-band-desc">Live-client learning loop. Real work, not courses. Defined outputs each week.</div>
+    </div>
+  </div>
+</div>
+
+<div class="page-section">
+  <div class="content-wrap">
+
+    <p class="reveal">This is not a course-completion plan. It is a live-client learning loop — A builds ABM and hypothesis capability directly on this engagement, in controlled steps with a defined deliverable each week. Autonomy is scoped carefully: A never operates beyond what has been reviewed and approved.</p>
+
+    <div class="weeks reveal mt24">
+      <div class="w-row">
+        <div class="w-left"><div class="w-big">W1</div><div class="w-tag">Week 1</div></div>
+        <div class="w-right">
+          <div class="w-title">Understand the buyer before building anything</div>
+          <div class="w-detail">A listens to 2 recorded sales calls involving VP HR buyers. Reads 3 win/loss summaries from comparable engagements. Produces a 1-page ICP document: who is the VP HR at a 400-employee company, what triggered them to evaluate analytics software, what their buying timeline looks like, what objections appear at demo stage. I review and push back on anything generic or assumed. The ICP document becomes the single source of truth for all subsequent list building and message writing — nothing moves forward without an approved ICP.</div>
+          <span class="w-out">Approved ICP doc. A articulates the buyer's context in their language, not marketing language.</span>
+        </div>
+      </div>
+      <div class="w-row">
+        <div class="w-left"><div class="w-big">W2</div><div class="w-tag">Week 2</div></div>
+        <div class="w-right">
+          <div class="w-title">Build the account list + write 3 outreach variants</div>
+          <div class="w-detail">A builds 50 target accounts in LinkedIn Sales Nav using ICP-derived filters. We review the list together — I identify what's included that shouldn't be, and what's been missed. A then writes 3 outreach message variants: pain-statement-led, sector benchmark insight-led, and curiosity-hook-led. No product pitch in any of them. I rewrite one variant in full to demonstrate insight-led vs sales-led framing. A rewrites the other two applying the same principle independently before re-submission.</div>
+          <span class="w-out">50-account list + 3 approved outreach messages. A understands account-level thinking vs campaign-level thinking.</span>
+        </div>
+      </div>
+      <div class="w-row">
+        <div class="w-left"><div class="w-big">W3</div><div class="w-tag">Week 3</div></div>
+        <div class="w-right">
+          <div class="w-title">Write a testable hypothesis first — then launch</div>
+          <div class="w-detail">Before touching any platform, A writes a hypothesis in this exact format: "We believe [action] will result in [measurable outcome] because [specific mechanism]. We will know it worked if [success metric] is achieved by [date]." I review it — if the mechanism is vague or the metric is directional rather than numerical, it goes back for revision. Only after approval does A activate the ABM sequence (25 of 50 accounts) and launch the LinkedIn seniority split experiment.</div>
+          <span class="w-out">Documented testable hypothesis. ABM sequence live. LinkedIn experiment running. Both tracked in ClickUp.</span>
+        </div>
+      </div>
+      <div class="w-row">
+        <div class="w-left"><div class="w-big">W4</div><div class="w-tag">Week 4</div></div>
+        <div class="w-right">
+          <div class="w-title">Read the data. Make a recommendation. Defend it in front of the client.</div>
+          <div class="w-detail">A prepares a 10-minute internal read-out: ABM reply rate vs hypothesis benchmark, LinkedIn experiment early performance, recommendation to continue / iterate / kill — with a reason tied directly to data. I push back on the reasoning, not the conclusion. If A can defend the logic, they deliver the client update on the weekly call independently. This is the distinction between execution-mode and lead-mode: standing behind a data-informed recommendation in front of a revenue stakeholder, without scaffolding.</div>
+          <span class="w-out">Documented read-out + independent client update delivered. A defends a strategic recommendation under pressure.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout green reveal mt24">
+      <div class="callout-label">Day 30 Success Criterion</div>
+      <p>Strategist A has independently built a target account list, launched an outreach sequence with a pre-written testable hypothesis, run a LinkedIn seniority experiment, and presented a data-backed recommendation to the client without prompting. The quality bar: the hypothesis is specific enough that a different strategist could pick it up and know exactly what to test, how to measure it, and when to call it. If A has reached this standard, the ABM gap is closed for execution purposes.</p>
+    </div>
+
+    <hr class="divider" id="content">
+
+    <!-- TASK 3: CONTENT -->
+    <div class="task-hd reveal">
+      <div class="task-badge ta">3</div>
+      <div class="task-meta">
+        <div class="task-tag">Task 3</div>
+        <div class="task-title">Content Ownership Model</div>
+        <div class="task-desc">What breaks when junior strategists own content — and how to build a system that prevents it at scale.</div>
+      </div>
+    </div>
+
+    <div class="callout amber reveal">
+      <div class="callout-label">The Belief That Breaks Content at Scale</div>
+      <p>Junior strategists who evaluate content on craft criteria — "Is this well-written? Does it flow?" — will consistently produce content that is readable and <strong>strategically inert</strong>. The failure mode is not bad writing. It is strategic disconnection: content that educates instead of converting, speaks to everyone instead of the ICP, and cannot be tied to any pipeline outcome. At scale, this creates an operation that looks productive and generates no commercial signal.</p>
+    </div>
+
+    <p class="reveal mt16">The specific gap is the absence of a <strong>conversion-oriented success standard</strong>. The standard required is not "is this good writing?" but: <em>did this content move the right person toward a decision?</em> That is the only question that matters. The system's job is to make that question impossible to ignore at every stage of production.</p>
+
+    <div class="syscards reveal mt24">
+      <div class="scard">
+        <div class="scard-icon si-coral">🎯</div>
+        <div class="scard-title">The Brief as a Positioning Document</div>
+        <div class="scard-body">Every content asset requires a mandatory brief answering four questions before a word is written: (1) Who exactly is this for — specific ICP tier? (2) What decision does this support? (3) What single action should the reader take? (4) What does success look like in measurable terms? A brief that cannot answer all four is returned. Strategic intent gates production — it is never the afterthought.</div>
+      </div>
+      <div class="scard">
+        <div class="scard-icon si-blue">✓</div>
+        <div class="scard-title">Two-Stage QA — Strategic, Then Editorial</div>
+        <div class="scard-body"><strong>Stage 1 (self-review):</strong> Does the opening address a specific ICP pain? Does every section serve the brief's stated decision? One clear next action? Tone calibrated to seniority? <strong>Stage 2 (lead review — strategic only):</strong> Reviewer reads with the brief open. Not line-editing prose — checking strategic alignment. One round of substantive notes. The strategist owns the prose; the system owns the strategy.</div>
+      </div>
+      <div class="scard">
+        <div class="scard-icon si-green">📊</div>
+        <div class="scard-title">Content Tied to Funnel Metrics</div>
+        <div class="scard-body">Every content asset is tagged to a funnel stage and a specific KPI on publication: awareness-stage → qualified ICP visitor rate; lead magnets → CVR + lead seniority; nurture emails → click-to-demo conversion. Strategists review these numbers in weekly 1-on-1s and must explain variance — not just report it. Explaining five underperforming pieces develops more reliable instincts than completing ten writing courses.</div>
+      </div>
+      <div class="scard">
+        <div class="scard-icon si-amber">🔁</div>
+        <div class="scard-title">30-Day Retrospective Loop</div>
+        <div class="scard-body">Every significant content asset gets a formal 30-day retrospective: what was the hypothesis, what happened in the data, what would be briefed differently now. Documented in the knowledge base. Becomes a training reference for future strategists. Over 12 months, this creates a body of evidence across client verticals that new hires can onboard from in their first two weeks — rather than repeating known, costly mistakes.</div>
+      </div>
+    </div>
+
+    <div class="callout green reveal mt24">
+      <div class="callout-label">Governing Principle</div>
+      <p>Content quality at scale is not a function of individual writing ability. It is a function of how precisely the system defines what "good" means before production begins, and how rigorously it measures outcomes after. A system that makes strategically aligned content easier to produce than strategically misaligned content — regardless of who is writing — is the only version that holds at scale.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ────────────────── PROOF BAND ────────────────── -->
+<div class="sec-band" id="proof">
+  <div class="sec-band-inner">
+    <div class="sec-band-num">03</div>
+    <div>
+      <div class="sec-band-kicker">Execution Proof Layer</div>
+      <div class="sec-band-title">This is what it looks like in practice.</div>
+      <div class="sec-band-desc">Real SERP landscape, live LinkedIn targeting parameters, an actual ABM message, and one unfair advantage idea. Not theory — execution.</div>
+    </div>
+  </div>
+</div>
+
+<div class="page-section" id="proof-section">
+  <div class="content-wrap">
+
+    <!-- ── SERP LANDSCAPE ── -->
+    <div class="proof-sub-hd reveal">
+      <div class="proof-sub-num">01</div>
+      <div>
+        <div class="proof-sub-kicker">SERP Landscape Audit</div>
+        <div class="proof-sub-title">Who's winning "HR analytics software" — and where to intercept.</div>
+      </div>
+    </div>
+    <p class="reveal">Before spending a dollar on Google Search, I mapped the competitive SERP to find the exact gap the client can win. The keyword isn't "HR metrics to track" — it's the commercial queries buyers use when they're already evaluating vendors.</p>
+
+    <div class="serp-wrap reveal mt24">
+      <div class="serp-bar">
+        <div class="serp-bar-left">
+          <div class="serp-favicon">G</div>
+          <div class="serp-query">hr analytics software mid-market</div>
+        </div>
+        <div class="serp-bar-right">
+          <span class="serp-tag">Commercial intent</span>
+          <span class="serp-tag serp-tag-green">High buyer readiness</span>
+        </div>
+      </div>
+
+      <div class="serp-results">
+        <!-- Ads section -->
+        <div class="serp-section-label">Paid Results — Who's spending here</div>
+        <div class="serp-result serp-ad">
+          <div class="serp-result-top">
+            <span class="serp-ad-pill">Ad</span>
+            <span class="serp-domain">rippling.com</span>
+          </div>
+          <div class="serp-title">Rippling HR Analytics — See Every People Metric in One Place</div>
+          <div class="serp-desc">Track headcount, attrition, compensation, and performance in real time. Built for growing companies. <strong>Free demo →</strong></div>
+          <div class="serp-analysis">Analysis: Rippling targets the same ICP and is spending heavily. Their CTA is "free demo" — same mistake. <em class="serp-opp">Opportunity: outbid them on long-tail intent keywords with a higher-value offer (benchmark report vs demo).</em></div>
+        </div>
+
+        <div class="serp-result serp-ad">
+          <div class="serp-result-top">
+            <span class="serp-ad-pill">Ad</span>
+            <span class="serp-domain">hibob.com</span>
+          </div>
+          <div class="serp-title">HR Analytics for Mid-Size Companies | HiBob HRIS</div>
+          <div class="serp-desc">Visualise workforce data, plan headcount, and report to leadership. Purpose-built for 200–2,000 employees.</div>
+          <div class="serp-analysis">Analysis: HiBob is actively spending in this space. They own mid-market positioning. <em class="serp-opp">Opportunity: Target "[HiBob] alternative" and "HiBob vs [client]" queries — high-intent, low competition, budget-efficient.</em></div>
+        </div>
+
+        <!-- Organic section -->
+        <div class="serp-section-label" style="margin-top:16px">Organic Results — Who's ranking and why</div>
+
+        <div class="serp-result">
+          <div class="serp-result-top"><span class="serp-pos">1</span><span class="serp-domain">g2.com</span></div>
+          <div class="serp-title">Best HR Analytics Software 2025 — G2 Reviews & Ratings</div>
+          <div class="serp-desc">Compare top HR analytics tools. 400+ verified reviews from real users at mid-market companies.</div>
+          <div class="serp-analysis">Analysis: G2 dominates position 1 with review aggregation. <em class="serp-opp">Opportunity: Get listed on G2, optimise for category-specific terms, and use G2 reviews as social proof in ad copy.</em></div>
+        </div>
+
+        <div class="serp-result">
+          <div class="serp-result-top"><span class="serp-pos">2</span><span class="serp-domain">lattice.com</span></div>
+          <div class="serp-title">HR Analytics Software for People Teams | Lattice</div>
+          <div class="serp-desc">Turn your people data into business decisions. Performance + analytics in one platform.</div>
+          <div class="serp-analysis">Analysis: Lattice ranks organically with product pages built around buyer-intent copy. <em class="serp-opp">Opportunity: The client has no equivalent commercial-intent product page. This is a quick win — one new page targeting "HR analytics software [company size]" could rank within 60 days.</em></div>
+        </div>
+
+        <div class="serp-result serp-gap">
+          <div class="serp-result-top"><span class="serp-pos serp-pos-gap">?</span><span class="serp-domain" style="color:var(--coral)">client.com — not present</span></div>
+          <div class="serp-title" style="color:var(--ink-9)">No presence on any commercial-intent SERP</div>
+          <div class="serp-desc" style="color:var(--ink-9)">The client ranks only for informational queries ("HR metrics to track") — pages with no buying intent.</div>
+          <div class="serp-analysis" style="background:rgba(224,90,56,.06);border-color:rgba(224,90,56,.2)">Strategic gap: Zero visibility when buyers are actively evaluating. Every month without a commercial-intent page is direct revenue left for Rippling and HiBob to capture.</div>
+        </div>
+      </div>
+
+      <div class="serp-verdict">
+        <div class="sv-label">SERP Verdict</div>
+        <div class="sv-text">3 keyword clusters to activate immediately: <strong>"HR analytics software [company size]"</strong> (product page SEO), <strong>"[competitor] alternative"</strong> (paid + landing page), <strong>"HR analytics ROI"</strong> (benchmark report SEO). Total estimated monthly search volume across these three clusters: 2,400–3,800 searches, 85%+ commercial intent.</div>
+      </div>
+    </div>
+
+
+    <!-- ── LINKEDIN TARGETING ── -->
+    <div class="proof-sub-hd reveal">
+      <div class="proof-sub-num">02</div>
+      <div>
+        <div class="proof-sub-kicker">LinkedIn Campaign Setup</div>
+        <div class="proof-sub-title">Exact targeting parameters for the VP-level audience.</div>
+      </div>
+    </div>
+    <p class="reveal">This is what the LinkedIn Campaign Manager setup looks like for Experiment 01. Not approximate — the exact filters that produce the right audience.</p>
+
+    <div class="li-mockup reveal mt24">
+      <div class="li-header">
+        <div class="li-logo">in</div>
+        <div>
+          <div class="li-title">Campaign Manager — Audience Setup</div>
+          <div class="li-sub">Sponsored Content · Lead Gen Form · Benchmark Report offer</div>
+        </div>
+        <div class="li-status">
+          <span class="li-badge li-badge-draft">Draft</span>
+        </div>
+      </div>
+
+      <div class="li-body">
+        <div class="li-col">
+          <div class="li-section-label">Targeting Criteria</div>
+
+          <div class="li-field">
+            <div class="li-field-label">Job Title</div>
+            <div class="li-tags">
+              <span class="li-tag li-tag-on">VP of HR</span>
+              <span class="li-tag li-tag-on">VP Human Resources</span>
+              <span class="li-tag li-tag-on">Chief People Officer</span>
+              <span class="li-tag li-tag-on">CHRO</span>
+              <span class="li-tag li-tag-on">Director of HR</span>
+              <span class="li-tag li-tag-on">Head of People</span>
+              <span class="li-tag li-tag-off">HR Manager ✕</span>
+              <span class="li-tag li-tag-off">HR Coordinator ✕</span>
+            </div>
+            <div class="li-field-note">Excluding: HR managers, coordinators, HRBP (wrong seniority tier)</div>
+          </div>
+
+          <div class="li-field">
+            <div class="li-field-label">Company Size</div>
+            <div class="li-tags">
+              <span class="li-tag li-tag-on">201–500 employees</span>
+              <span class="li-tag li-tag-on">501–1,000 employees</span>
+              <span class="li-tag li-tag-off">1–50 ✕</span>
+              <span class="li-tag li-tag-off">51–200 ✕</span>
+              <span class="li-tag li-tag-off">1,001–5,000 ✕</span>
+            </div>
+          </div>
+
+          <div class="li-field">
+            <div class="li-field-label">Industry</div>
+            <div class="li-tags">
+              <span class="li-tag li-tag-on">Technology</span>
+              <span class="li-tag li-tag-on">Financial Services</span>
+              <span class="li-tag li-tag-on">Healthcare</span>
+              <span class="li-tag li-tag-on">Professional Services</span>
+              <span class="li-tag li-tag-on">Retail</span>
+            </div>
+            <div class="li-field-note">Start broad across high-HR-spend industries. Narrow after Week 2 based on CPL data.</div>
+          </div>
+
+          <div class="li-field">
+            <div class="li-field-label">Geography</div>
+            <div class="li-tags">
+              <span class="li-tag li-tag-on">United States</span>
+              <span class="li-tag li-tag-on">United Kingdom</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="li-col li-col-right">
+          <div class="li-section-label">Audience Forecast</div>
+          <div class="li-stat-grid">
+            <div class="li-stat">
+              <div class="li-stat-v">38,000–52,000</div>
+              <div class="li-stat-l">Matched audience size</div>
+            </div>
+            <div class="li-stat">
+              <div class="li-stat-v">$18–28</div>
+              <div class="li-stat-l">Estimated CPL (Lead Gen)</div>
+            </div>
+            <div class="li-stat">
+              <div class="li-stat-v">0.5–0.8%</div>
+              <div class="li-stat-l">Expected CTR (VP-level)</div>
+            </div>
+            <div class="li-stat">
+              <div class="li-stat-v">$4,000</div>
+              <div class="li-stat-l">Monthly budget</div>
+            </div>
+          </div>
+          <div class="li-section-label" style="margin-top:20px">Ad Format</div>
+          <div class="li-ad-preview">
+            <div class="li-ad-img">📊</div>
+            <div class="li-ad-body">
+              <div class="li-ad-company">HR Analytics Co. · Sponsored</div>
+              <div class="li-ad-headline">Is your time-to-hire above the mid-market average?</div>
+              <div class="li-ad-text">Download the 2025 HR Analytics Benchmark Report — free benchmarks for 200–1,000 employee companies.</div>
+              <div class="li-ad-cta">Download Report →</div>
+            </div>
+          </div>
+          <div class="li-field-note" style="margin-top:10px">Lead Gen Form captures: Name, Company, Title, Company Size, Industry, Primary HR challenge. Auto-disqualifies non-ICP before CRM entry.</div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ── ABM MESSAGE ── -->
+    <div class="proof-sub-hd reveal">
+      <div class="proof-sub-num">03</div>
+      <div>
+        <div class="proof-sub-kicker">ABM Outreach Message</div>
+        <div class="proof-sub-title">The exact message I'd send. Trigger: HRIS job posting.</div>
+      </div>
+    </div>
+    <p class="reveal">This is Variant B from Experiment 03 — the insight-led message. The trigger: the target account posted a "Senior HR Analytics Manager" job listing 6 days ago. That's a buying signal. Here's the outreach.</p>
+
+    <div class="abm-wrap reveal mt24">
+      <div class="abm-trigger">
+        <div class="abm-trigger-label">Trigger detected</div>
+        <div class="abm-trigger-content">
+          <div class="abm-trigger-icon">🔔</div>
+          <div>
+            <div class="abm-trigger-title">Acme Corp posted: "Senior HR Analytics Manager"</div>
+            <div class="abm-trigger-meta">Posted 6 days ago · 200–500 employees · SaaS · Chicago, IL</div>
+          </div>
+          <div class="abm-trigger-signal">High intent signal</div>
+        </div>
+      </div>
+
+      <div class="abm-message">
+        <div class="abm-msg-header">
+          <div class="abm-avatar">SK</div>
+          <div>
+            <div class="abm-from">Sarah K. (You) → Jamie L., VP People @ Acme Corp</div>
+            <div class="abm-channel">LinkedIn Message · Connection request note</div>
+          </div>
+        </div>
+        <div class="abm-msg-body">
+          <p>Hi Jamie — noticed Acme is hiring a Senior HR Analytics Manager. That's usually the inflection point where dashboards stop being enough and you need proper infrastructure behind them.</p>
+          <p>I work with mid-market people teams on exactly this — we published a benchmark report last month showing that companies in SaaS at your headcount stage average <strong>47 days to fill analytics-adjacent HR roles</strong>, vs 31 days when they have structured data pipelines in place.</p>
+          <p>Happy to send you the full report — no pitch, just the benchmarks. Worth a look as you build out the team?</p>
+        </div>
+        <div class="abm-msg-footer">
+          <div class="abm-msg-tags">
+            <span class="abm-tag">No product mention</span>
+            <span class="abm-tag">Specific trigger cited</span>
+            <span class="abm-tag">Benchmark data as hook</span>
+            <span class="abm-tag">Low-commitment ask</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="abm-variants">
+        <div class="abm-var-label">Why this message works — vs what most people send</div>
+        <div class="abm-var-grid">
+          <div class="abm-var abm-var-bad">
+            <div class="abm-var-head">❌ Typical outreach</div>
+            <div class="abm-var-text">"Hi Jamie, I help HR teams improve analytics. Would love to show you what we do. Are you free for a 30-minute call this week?"</div>
+            <div class="abm-var-why">Why it fails: leads with the sender's interests, asks for time from a stranger, no reason to reply.</div>
+          </div>
+          <div class="abm-var abm-var-good">
+            <div class="abm-var-head">✓ This message</div>
+            <div class="abm-var-text">Opens with their trigger. Leads with a specific benchmark. Asks only to send a report — near-zero friction. Product never mentioned.</div>
+            <div class="abm-var-why">Why it works: earns the right to the next conversation. VP replies to get the data, not to hear a pitch.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ── UNFAIR ADVANTAGE ── -->
+    <div class="proof-sub-hd reveal">
+      <div class="proof-sub-num">04</div>
+      <div>
+        <div class="proof-sub-kicker">The Unfair Advantage Idea</div>
+        <div class="proof-sub-title">One idea most growth teams haven't built yet.</div>
+      </div>
+    </div>
+    <p class="reveal">The 3 bets are solid. This is the one idea that makes the strategy memorable — and operationally hard for competitors to copy quickly.</p>
+
+    <div class="unfair-card reveal mt24">
+      <div class="unfair-header">
+        <div class="unfair-spark">⚡</div>
+        <div>
+          <div class="unfair-kicker">Signature Growth Idea</div>
+          <div class="unfair-title">The HRIS Job Posting Trigger System</div>
+        </div>
+      </div>
+      <div class="unfair-body">
+        <div class="unfair-desc">
+          <p>When a mid-market company posts a job listing for <em>"HR Analytics Manager," "People Analytics Lead,"</em> or <em>"HRIS Specialist,"</em> they are advertising a buying intent signal louder than any keyword search. They have a defined problem, a budget allocation in progress, and a decision-maker actively thinking about analytics infrastructure.</p>
+          <p>The idea: build an automated pipeline that monitors job boards (LinkedIn, Indeed, Greenhouse) for these specific job titles at companies matching the ICP, then triggers a personalised ABM sequence within 24 hours of the posting going live — before any competitor has seen the signal.</p>
+        </div>
+        <div class="unfair-how">
+          <div class="unfair-how-title">How It Works — 4-Step System</div>
+          <div class="unfair-steps">
+            <div class="unfair-step">
+              <div class="us-num">1</div>
+              <div class="us-body">
+                <div class="us-title">Signal detection</div>
+                <div class="us-text">Zapier or Clay monitors LinkedIn Jobs + Indeed for titles: "HR Analytics," "People Analytics," "HRIS Manager" at companies with 200–1,000 employees. Filters by industry. Fires when a new posting matches.</div>
+              </div>
+            </div>
+            <div class="unfair-step">
+              <div class="us-num">2</div>
+              <div class="us-body">
+                <div class="us-title">Account enrichment</div>
+                <div class="us-text">Apollo or Clay enriches the company — finds the VP HR or CHRO, verifies LinkedIn profile is active, checks if they're already in CRM. If net new: adds to ABM sequence queue.</div>
+              </div>
+            </div>
+            <div class="unfair-step">
+              <div class="us-num">3</div>
+              <div class="us-body">
+                <div class="us-title">Trigger-personalised outreach</div>
+                <div class="us-text">Message references the specific job posting (as shown in the ABM example above). Sent within 24 hours of posting going live. Reply rates on trigger-based messages are 3–5× higher than cold sequences — because the relevance is undeniable.</div>
+              </div>
+            </div>
+            <div class="unfair-step">
+              <div class="us-num">4</div>
+              <div class="us-body">
+                <div class="us-title">Retarget with LinkedIn ads</div>
+                <div class="us-text">Simultaneously, the VP's company is added to a LinkedIn Matched Audience. The Benchmark Report ad starts serving to them as a parallel touchpoint — warm outbound + paid retargeting hitting the same person in the same week.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="unfair-footer">
+        <div class="uf-stat"><div class="uf-v">~200–400</div><div class="uf-l">ICP job postings / month (estimated)</div></div>
+        <div class="uf-stat"><div class="uf-v">3–5×</div><div class="uf-l">Higher reply rate vs cold outreach</div></div>
+        <div class="uf-stat"><div class="uf-v">24h</div><div class="uf-l">From signal to outreach</div></div>
+        <div class="uf-stat"><div class="uf-v">$0</div><div class="uf-l">Incremental ad spend required</div></div>
+      </div>
+    </div>
+
+    <div class="callout reveal mt24">
+      <div class="callout-label">Why this is defensible</div>
+      <p>The strategy is not the idea — <strong>the execution infrastructure is the moat</strong>. Most competitors are still sending cold sequences to static lists. A client running a real-time job-posting trigger system is reaching the same VP before the competitor even knows the account is in market. This is compounding advantage: the earlier the touch, the easier the sale.</p>
+    </div>
+
+  </div>
+</div>
+
+</main>
+
+<!-- ════════════════════════════════════ FOOTER ══ -->
+<footer id="footer">
+  <div class="footer-inner">
+    <div class="footer-left">
+      <div class="footer-brand">pangolin</div>
+      <div class="footer-sub">Growth Marketing Lead — Assignment Submission · March 2026</div>
+    </div>
+    <div class="footer-center">
+      <div class="footer-name">Avisha Kumawat</div>
+      <div class="footer-contacts">
+        <span class="footer-contact-item">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" style="opacity:.4"><rect x="1" y="2.5" width="10" height="7" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M1 3.5L6 7l5-3.5" stroke="currentColor" stroke-width="1.2"/></svg>
+          avishakumawat&#64;gmail.com
+        </span>
+        <span class="footer-dot">·</span>
+        <a href="https://www.linkedin.com/in/avishakumawat" target="_blank" class="footer-contact-link">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" style="opacity:.4"><rect x="1" y="1" width="10" height="10" rx="2" stroke="currentColor" stroke-width="1.2"/><path d="M3.5 5v3.5M3.5 3.5v.01M5.5 8.5V6.5a1 1 0 012 0v2M5.5 6.5V5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+          linkedin.com/in/avishakumawat
+        </a>
+      </div>
+    </div>
+    <div class="footer-right">
+      <div class="footer-part-tag">Part 1: Client Growth Strategy</div>
+      <div class="footer-part-tag">Part 2: Team Capability Analysis</div>
+      <div class="footer-part-tag" style="color:var(--coral);opacity:.7">Execution Proof Layer ⚡</div>
+    </div>
+  </div>
+</footer>
+
+<!-- SCROLL TO TOP -->
+<div id="top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+
+<script>
+// ── Scroll tracking ──
+let lastY = 0;
+const nav = document.getElementById('nav');
+const npbar = document.getElementById('npbar');
+const rbfill = document.getElementById('reading-bar-fill');
+const topBtn = document.getElementById('top-btn');
+
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  const max = document.body.scrollHeight - window.innerHeight;
+  const pct = Math.min(100,(y / max * 100)).toFixed(1);
+
+  // Nav stays visible always — no hide-on-scroll
+  nav.classList.remove('hidden');
+  lastY = y;
+
+  // Progress bars
+  npbar.style.width = pct + '%';
+  rbfill.style.width = pct + '%';
+
+  // Top button
+  topBtn.classList.toggle('visible', y > 400);
+
+  // Sidebar active state
+  const sections = ['cover','part1','strategy','channels','offer','experiments','measurement','part2','assignment','devplan','content','proof'];
+  let current = sections[0];
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el && el.getBoundingClientRect().top < 120) current = id;
+  });
+  document.querySelectorAll('.sb-item').forEach((item, i) => {
+    item.classList.toggle('active', sections[i] === current);
+  });
+
+  // Nav active
+  const navSections = ['cover','part1','strategy','measurement','part2','devplan','proof'];
+  let navCurrent = navSections[0];
+  navSections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el && el.getBoundingClientRect().top < 80) navCurrent = id;
+  });
+  document.querySelectorAll('.nav-link').forEach((link, i) => {
+    link.classList.toggle('active', navSections[i] === navCurrent);
+  });
+}, {passive:true});
+
+// ── Nav scroll (renamed to avoid shadowing window.scrollTo) ──
+function navScrollTo(id) {
+  const el = document.getElementById(id);
+  if (el) {
+    const top = el.getBoundingClientRect().top + window.scrollY - 60;
+    window.scrollTo({top, behavior:'smooth'});
+  }
+}
+
+// ── Reveal on scroll ──
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('in');
+      observer.unobserve(e.target);
+    }
+  });
+}, {threshold:0.1, rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal,.reveal-l').forEach(el => observer.observe(el));
+
+// ── Funnel animation ──
+const fObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('.f-bar').forEach((bar, i) => {
+        const tw = bar.style.width || '100%';
+        bar.style.width = '0'; bar.style.minWidth = '0';
+        setTimeout(() => {
+          bar.style.transition = 'width .8s cubic-bezier(.4,0,.2,1)';
+          bar.style.width = tw;
+          setTimeout(() => { bar.style.minWidth = ''; bar.style.transition = ''; }, 900);
+        }, i * 160 + 80);
+      });
+      fObs.unobserve(e.target);
+    }
+  });
+}, {threshold:0.15});
+document.querySelectorAll('#funnel').forEach(el => fObs.observe(el));
+
+// ── Toggle bets ──
+function toggleBet(head) {
+  const body = head.nextElementSibling;
+  const chev = head.querySelector('.bet-chevron');
+  const open = body.classList.toggle('open');
+  chev.classList.toggle('open', open);
+}
+
+// ── Toggle experiments ──
+function toggleExp(head) {
+  const cols = head.nextElementSibling;
+  const chev = head.querySelector('.exp-chev');
+  const open = cols.classList.toggle('open');
+  chev.classList.toggle('open', open);
+}
+
+// ── Open first bet and first exp by default ──
+document.addEventListener('DOMContentLoaded', () => {
+  const firstBetHead = document.querySelector('.bet-head');
+  if (firstBetHead) toggleBet(firstBetHead);
+  const firstExpHead = document.querySelector('.exp-hd');
+  if (firstExpHead) toggleExp(firstExpHead);
+});
+
+// ── Metric card counter animation ──
+const mcObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.style.animation = 'countPop .4s ease both';
+      mcObs.unobserve(e.target);
+    }
+  });
+}, {threshold:0.5});
+document.querySelectorAll('.metric-value, .cstat-v').forEach(el => mcObs.observe(el));
+</script>
+</body>
+</html>
